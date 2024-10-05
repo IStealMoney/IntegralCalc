@@ -7,11 +7,29 @@ package com.aicherlenja.integralcalc;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleGroup;
 
-public class GUIController {
+public class GUIController {    //UI control logic
     @FXML
-    private Label resultLabel;
+    private Label labelA;
+
+    @FXML
+    private Label labelB;
+
+    @FXML
+    private Label labelC;
+
+    @FXML
+    private Label labelX1;
+
+    @FXML
+    private Label labelX2;
+
+
+    ToggleGroup toggleGroup = new ToggleGroup();
+
 
     public GUIController() {
+
     }
 }
