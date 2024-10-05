@@ -3,7 +3,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aicherlenja.integralcalc.GUI">
+
+<VBox prefHeight="400.0" prefWidth="600.0" stylesheets="@GUI.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aicherlenja.integralcalc.GUIController">
    <children>
       <SplitPane dividerPositions="0.35451505016722407" prefHeight="400.0" prefWidth="600.0">
         <items>
@@ -25,4 +26,4 @@
         </items>
       </SplitPane>
    </children>
-</AnchorPane>
+</VBox>

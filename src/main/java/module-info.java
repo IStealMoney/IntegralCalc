@@ -7,6 +7,4 @@ module com.aicherlenja.integralcalc {
 
     opens com.aicherlenja.integralcalc to javafx.fxml;
     exports com.aicherlenja.integralcalc;
-    exports com.aicherlenja.integralcalc.controller;
-    opens com.aicherlenja.integralcalc.controller to javafx.fxml;
 }

@@ -1,9 +1,11 @@
 package com.aicherlenja.integralcalc;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
@@ -15,9 +17,9 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        //FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("hello-view.fxml"));
 
-        Group root = new Group();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("GUI.fxml"));
+        Parent root = loader.load();
         Scene scene = new Scene(root);
 
         ToggleGroup toggleGroup = new ToggleGroup(); //for RadioButton
@@ -63,8 +65,8 @@ public class Main extends Application {
         vboxLeft.getChildren().add(buttonSubmit);
 
         buttonSubmit.setOnAction(e -> {
-            Controller controller = new Controller();
-            controller.submitBtnPressed();
+            //Controller controller = new Controller();
+            //controller.submitBtnPressed();
         });
 
         TextArea textArea = new TextArea();
@@ -72,7 +74,7 @@ public class Main extends Application {
         vboxLeft.getChildren().add(textArea);
 
         stage.setTitle("IntegralCalc");
-        stage.setScene(new Scene(vboxLeft, 800, 400));
+        stage.setScene(scene);
         stage.show();
     }
 

@@ -2,11 +2,6 @@ package com.aicherlenja.integralcalc;
 
 public class GUI {
 
-    public void showFrame() {
-
-
-    }
-
     public int kindOfFunction() {
         //wenn
         return 0;
