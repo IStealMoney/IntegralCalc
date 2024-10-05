@@ -1,21 +1,19 @@
 package com.aicherlenja.integralcalc;
 
-public class Linear {
-    public double a;
-    public double b;
-    public double xMin, xMax, breite, hoehe;
+public class Linear {   // f(x) = ax + b
+    GUIController guiCon = new GUIController();
+    public double x1, x2, widthX, heightX, calculatedArea;
 
-    public double berechneFktWert(double pX) {
-        return a * pX + b;
+    public void calculateArea() {
+        x1 = Double.parseDouble(guiCon.textFieldX1.getText());
+        x2 = Double.parseDouble(guiCon.textFieldX2.getText());
+
+        widthX = x2 - x1;
+        calculatedArea = 0;
     }
 
-    public double berechneFlaeche(double pMin, double pMax, int anzahlAbschnitte) {
-        breite = pMax - pMin;
-        double flaeche = 0;
-        for (int i = 0; i < anzahlAbschnitte; i++) {
-            hoehe = pMin + i*breite;
-            flaeche = flaeche + hoehe * breite;
-        }
-        return flaeche;
+    public void showSolution() {
+        GUIController guiCon = new GUIController();
+        guiCon.textArea.setText(String.valueOf(calculatedArea));
     }
 }

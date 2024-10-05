@@ -6,22 +6,22 @@
 package com.aicherlenja.integralcalc;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 
 public class GUIController {    //UI control logic
+
     @FXML
     private Label labelA, labelB, labelC, labelX1, labelX2;
 
     @FXML
-    private TextField textFieldA, textFieldB, textFieldC, textFieldX1, textFieldX2;
+    TextField textFieldA, textFieldB, textFieldC, textFieldX1, textFieldX2;
 
     @FXML
-    private RadioButton radioButtonLin, radioButtonQuad, radioButtonSin;
+    RadioButton radioButtonLin, radioButtonQuad, radioButtonSin;
 
-    ToggleGroup toggleGroup = new ToggleGroup();
+    @FXML
+    TextArea textArea;
+
 
 
     public GUIController() {
@@ -30,11 +30,16 @@ public class GUIController {    //UI control logic
 
     @FXML
     private void initialize() {
-
+        ToggleGroup tg = new ToggleGroup();
+        radioButtonLin.setToggleGroup(tg);
+        radioButtonQuad.setToggleGroup(tg);
+        radioButtonSin.setToggleGroup(tg);
     }
 
     @FXML
     private void submitBtnPressed() {
+        Troubleshooter troubleshooter = new Troubleshooter();
+        troubleshooter.correctUserInput();
         if (radioButtonLin.isSelected()) {
 
         } else if (radioButtonQuad.isSelected()) {
