@@ -9,7 +9,7 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="487.0" prefWidth="280.0">
                <children>
-                  <Button fx:id="buttonSubmit" layoutX="70.0" layoutY="525.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="104.0" text="Submit" textAlignment="CENTER" />
+                  <Button fx:id="buttonSubmit" layoutX="70.0" layoutY="525.0" mnemonicParsing="false" onAction="#submitBtnPressed" prefHeight="37.0" prefWidth="104.0" text="Submit" textAlignment="CENTER" />
                   <RadioButton fx:id="radioButtonLin" layoutX="50.0" layoutY="75.0" mnemonicParsing="false" text="linear" />
                   <RadioButton fx:id="radioButtonQuad" layoutX="50.0" layoutY="100.0" mnemonicParsing="false" text="quadratic" />
                   <RadioButton fx:id="radioButtonSin" layoutX="50.0" layoutY="125.0" mnemonicParsing="false" text="sinus" />

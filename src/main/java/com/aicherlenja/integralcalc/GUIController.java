@@ -7,29 +7,40 @@ package com.aicherlenja.integralcalc;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 
 public class GUIController {    //UI control logic
     @FXML
-    private Label labelA;
+    private Label labelA, labelB, labelC, labelX1, labelX2;
 
     @FXML
-    private Label labelB;
+    private TextField textFieldA, textFieldB, textFieldC, textFieldX1, textFieldX2;
 
     @FXML
-    private Label labelC;
-
-    @FXML
-    private Label labelX1;
-
-    @FXML
-    private Label labelX2;
-
+    private RadioButton radioButtonLin, radioButtonQuad, radioButtonSin;
 
     ToggleGroup toggleGroup = new ToggleGroup();
 
 
     public GUIController() {
 
+    }
+
+    @FXML
+    private void initialize() {
+
+    }
+
+    @FXML
+    private void submitBtnPressed() {
+        if (radioButtonLin.isSelected()) {
+
+        } else if (radioButtonQuad.isSelected()) {
+
+        } else if (radioButtonSin.isSelected()) {
+
+        }
     }
 }
