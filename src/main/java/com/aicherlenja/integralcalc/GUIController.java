@@ -22,12 +22,6 @@ public class GUIController {    //UI control logic
     @FXML
     TextArea textArea;
 
-
-
-    public GUIController() {
-
-    }
-
     @FXML
     private void initialize() {
         ToggleGroup tg = new ToggleGroup();
@@ -39,13 +33,18 @@ public class GUIController {    //UI control logic
     @FXML
     private void submitBtnPressed() {
         Troubleshooter troubleshooter = new Troubleshooter();
-        troubleshooter.correctUserInput();
-        if (radioButtonLin.isSelected()) {
+        Linear linear = new Linear();
+        Quad quad = new Quad();
+        Sinus sinus = new Sinus();
 
-        } else if (radioButtonQuad.isSelected()) {
-
-        } else if (radioButtonSin.isSelected()) {
-
+        if (troubleshooter.correctUserInput()) {
+            if (radioButtonLin.isSelected()) {
+                linear.calculateArea();
+            } else if (radioButtonQuad.isSelected()) {
+                quad.calculateArea();
+            } else if (radioButtonSin.isSelected()) {
+                sinus.calculateArea();
+            }
         }
     }
 }

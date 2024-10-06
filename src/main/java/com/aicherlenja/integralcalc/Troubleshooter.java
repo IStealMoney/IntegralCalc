@@ -4,7 +4,7 @@ public class Troubleshooter {
 
     public String x1, x2;
 
-    public void correctUserInput()  {
+    public boolean correctUserInput()  {
         GUIController guiCon = new GUIController();
         x1 = guiCon.textFieldX1.getText();
         x2 = guiCon.textFieldX2.getText();
@@ -13,5 +13,6 @@ public class Troubleshooter {
                 guiCon.textFieldX2.getText().isEmpty()) {
             guiCon.textArea.setText("please reconsider x1 or x2 value");
         }
+        return true;
     }
 }

@@ -10,6 +10,8 @@ public class Linear {   // f(x) = ax + b
 
         widthX = x2 - x1;
         calculatedArea = 0;
+
+        showSolution();
     }
 
     public void showSolution() {
