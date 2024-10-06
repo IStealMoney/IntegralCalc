@@ -5,11 +5,16 @@ public class Linear {   // f(x) = ax + b
     public double x1, x2, widthX, heightX, calculatedArea;
 
     public void calculateArea() {
+
         x1 = Double.parseDouble(guiCon.textFieldX1.getText());
         x2 = Double.parseDouble(guiCon.textFieldX2.getText());
 
+
+
         widthX = x2 - x1;
         calculatedArea = 0;
+
+
 
         showSolution();
     }

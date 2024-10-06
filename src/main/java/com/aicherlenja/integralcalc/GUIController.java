@@ -14,13 +14,25 @@ public class GUIController {    //UI control logic
     private Label labelA, labelB, labelC, labelX1, labelX2;
 
     @FXML
-    TextField textFieldA, textFieldB, textFieldC, textFieldX1, textFieldX2;
+    TextField textFieldA = new TextField();
+
+    @FXML
+    TextField textFieldB = new TextField();
+
+    @FXML
+    TextField textFieldC = new TextField();
+
+    @FXML
+    TextField textFieldX1 = new TextField();
+
+    @FXML
+    TextField textFieldX2 = new TextField();
 
     @FXML
     RadioButton radioButtonLin, radioButtonQuad, radioButtonSin;
 
     @FXML
-    TextArea textArea;
+    TextArea textArea = new TextArea();
 
     @FXML
     private void initialize() {
