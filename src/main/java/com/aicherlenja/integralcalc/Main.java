@@ -22,6 +22,9 @@ public class Main extends Application {
         Parent root = loader.load();
         Scene scene = new Scene(root);
 
+        GUICS cs = new GUICS(); //for coordinate system
+        cs.drawCs();
+
         stage.setTitle("IntegralCalc");
         stage.setScene(scene);
         stage.show();
