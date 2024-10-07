@@ -1,6 +1,6 @@
 package com.aicherlenja.integralcalc;
 
-public class Sinus {
+public class Sinus extends Function {   //subclass
 
     public void calculateArea() {
 

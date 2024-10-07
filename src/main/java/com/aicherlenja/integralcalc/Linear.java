@@ -1,6 +1,7 @@
 package com.aicherlenja.integralcalc;
 
-public class Linear {   // f(x) = ax + b
+public class Linear extends Function {  //subclass
+    // f(x) = ax + b
     GUIController guiCon = new GUIController();
     public double x1, x2, widthX, heightX, calculatedArea;
 
