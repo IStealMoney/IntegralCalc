@@ -7,8 +7,13 @@ public class Troubleshooter {
     public boolean correctUserInput()  {
         GUIController guiCon = new GUIController();
 
-        x1 = guiCon.textFieldX1.getText();
-        x2 = guiCon.textFieldX2.getText();
+        try {
+            x1 = guiCon.textFieldX1.getText();
+            x2 = guiCon.textFieldX2.getText();
+        } catch (NullPointerException e) {
+            System.out.println("can not get text");
+        }
+
 
         if(Double.parseDouble(x2) < Double.parseDouble(x1) ||
                 guiCon.textFieldX1.getText().isEmpty() ||
