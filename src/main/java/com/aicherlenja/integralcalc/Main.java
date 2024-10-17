@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -22,12 +23,22 @@ public class Main extends Application {
         Parent root = loader.load();
         Scene scene = new Scene(root);
 
-        GUICS cs = new GUICS(); //for coordinate system
+        GUICS cs = new GUICS(); // coordinate system
         cs.drawCs();
-
+        stage.initStyle(StageStyle.DECORATED);
         stage.setTitle("IntegralCalc");
         stage.setScene(scene);
+        //stage.setFullScreen(true);
         stage.show();
+
+        //stage event listener
+        stage.setOnCloseRequest(event -> {
+            System.out.println("Closing");
+        });
+
+        stage.setOnHiding(event -> {
+            System.out.println("Hiding");
+        });
     }
 
     public static void main(String[] args) {
