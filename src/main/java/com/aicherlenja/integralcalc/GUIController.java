@@ -12,6 +12,7 @@ public class GUIController {    //UI control logic
 
     public float uiTextFieldA, uiTextFieldB, uiTextFieldC, uiX1, uiX2;
     public boolean uiLin, uiQuad, uiSin;
+    public String valueTextArea;
 
     @FXML
     private Label labelA, labelB, labelC, labelX1, labelX2;
@@ -23,7 +24,7 @@ public class GUIController {    //UI control logic
     private RadioButton radioButtonLin, radioButtonQuad, radioButtonSin;
 
     @FXML
-    private TextArea textAreaSolution;
+    private TextArea textArea = new TextArea();
 
     @FXML
     private void initialize() {
@@ -54,7 +55,6 @@ public class GUIController {    //UI control logic
             // nichts
         }
 
-
         if (troubleshooter.correctUserInput()) {
             if (radioButtonLin.isSelected()) {
                 linear.calculateArea();
@@ -67,15 +67,17 @@ public class GUIController {    //UI control logic
     }
 
     public void displayErrorX1X2() {
-        textAreaSolution.setText("Error: The value of X2 needs to be greater than the value of X1!");
+        valueTextArea = "Error: The value of X2 needs to be greater than the value of X1!";
+        textArea.setText(valueTextArea);
     }
 
     public void displayErrorLinTooMuch() {
-        textAreaSolution.setText("You just need to fill in values for a and b!");
+        valueTextArea = "You just need to fill in values for a and b!";
+        textArea.setText(valueTextArea);
     }
 
     public void showSolution(float solution) {
-        textAreaSolution.setText(String.valueOf(solution));
+        textArea.setText(String.valueOf(solution));
 
     }
 }
