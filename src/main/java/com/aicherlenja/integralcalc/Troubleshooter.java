@@ -2,25 +2,19 @@ package com.aicherlenja.integralcalc;
 
 public class Troubleshooter {
 
-    public String x1, x2;
-
     public boolean correctUserInput()  {
         GUIController guiCon = new GUIController();
 
-        try {
-            x1 = guiCon.textFieldX1.getText();
-            x2 = guiCon.textFieldX2.getText();
-        } catch (NullPointerException e) {
-            System.out.println("can not get text");
+
+        // if value of x2 ist greater than value of x1
+        if(guiCon.uiX2 < guiCon.uiX1) {
+            guiCon.displayErrorX1X2();
         }
 
-
-        if(Double.parseDouble(x2) < Double.parseDouble(x1) ||
-                guiCon.textFieldX1.getText().isEmpty() ||
-                guiCon.textFieldX2.getText().isEmpty()) {
-            guiCon.textArea.setText("please reconsider x1 or x2 value");
+        // too much entries for linear function
+        if (guiCon.uiLin && guiCon.uiTextFieldC == 0) {
+            guiCon.displayErrorLinTooMuch();
         }
-
 
         return true;
     }

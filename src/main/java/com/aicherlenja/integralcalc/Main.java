@@ -35,8 +35,6 @@ public class Main extends Application {
         stage.setOnCloseRequest(event -> {
             System.out.println("Closing");
         });
-
-
     }
 
     public static void main(String[] args) {
