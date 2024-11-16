@@ -14,25 +14,13 @@ public class GUIController {    //UI control logic
     private Label labelA, labelB, labelC, labelX1, labelX2;
 
     @FXML
-    TextField textFieldA = new TextField();
+    private TextField textFieldA, textFieldB, textFieldC, textFieldX1, textFieldX2;
 
     @FXML
-    TextField textFieldB = new TextField();
+    private RadioButton radioButtonLin, radioButtonQuad, radioButtonSin;
 
     @FXML
-    TextField textFieldC = new TextField();
-
-    @FXML
-    TextField textFieldX1 = new TextField();
-
-    @FXML
-    TextField textFieldX2 = new TextField();
-
-    @FXML
-    RadioButton radioButtonLin, radioButtonQuad, radioButtonSin;
-
-    @FXML
-    TextArea textArea = new TextArea();
+    private TextArea textArea;
 
     @FXML
     private void initialize() {
@@ -43,11 +31,20 @@ public class GUIController {    //UI control logic
     }
 
     @FXML
-    private void submitBtnPressed() {
+    private void handleSubmitBtn() {
         Troubleshooter troubleshooter = new Troubleshooter();
         Linear linear = new Linear();
         Quad quad = new Quad();
         Sinus sinus = new Sinus();
+
+        float uiTextFieldA = Float.parseFloat(textFieldA.getText());
+        float uiTextFieldB = Float.parseFloat(textFieldB.getText());
+        float uiTextFieldC = Float.parseFloat(textFieldC.getText());
+        float uiTextFieldX1 = Float.parseFloat(textFieldX1.getText());
+        float uiTextFieldX2 = Float.parseFloat(textFieldX2.getText());
+        boolean uiRadioButtonLin = radioButtonLin.isSelected();
+        boolean uiRadioButtonQuad = radioButtonQuad.isSelected();
+        boolean uiRadioButtonSin = radioButtonSin.isSelected();
 
         if (troubleshooter.correctUserInput()) {
             if (radioButtonLin.isSelected()) {

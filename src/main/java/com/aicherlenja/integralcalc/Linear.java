@@ -6,6 +6,8 @@ public class Linear extends Function {  //subclass
     public double x1, x2, widthX, heightX, calculatedArea;
 
     public void calculateArea() {
+
+
         try {
             x1 = Double.parseDouble(guiCon.textFieldX1.getText());
             x2 = Double.parseDouble(guiCon.textFieldX2.getText());

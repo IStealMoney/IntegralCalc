@@ -23,8 +23,8 @@ public class Main extends Application {
         Parent root = loader.load();
         Scene scene = new Scene(root);
 
-        GUICS cs = new GUICS(); // coordinate system
-        cs.drawCs();
+        //GUICS cs = new GUICS(); // coordinate system
+        //cs.drawCs();
         stage.initStyle(StageStyle.DECORATED);
         stage.setTitle("IntegralCalc");
         stage.setScene(scene);
@@ -36,9 +36,7 @@ public class Main extends Application {
             System.out.println("Closing");
         });
 
-        stage.setOnHiding(event -> {
-            System.out.println("Hiding");
-        });
+
     }
 
     public static void main(String[] args) {
