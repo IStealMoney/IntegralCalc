@@ -15,7 +15,7 @@ public class Troubleshooter {
         }
 
         // too much entries for linear function
-        if (guiCon.uiLin && guiCon.uiTextFieldC == 0) {
+        if (guiCon.uiTextFieldC == 0) {
             guiCon.displayErrorLinTooMuch("You just need to fill in values for a and b!");
             return false;
         }

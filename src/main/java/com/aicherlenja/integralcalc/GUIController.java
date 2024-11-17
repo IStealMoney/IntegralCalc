@@ -5,14 +5,15 @@
 
 package com.aicherlenja.integralcalc;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 public class GUIController {    //UI control logic
 
     public static float uiTextFieldA, uiTextFieldB, uiTextFieldC, uiX1, uiX2;
-    public static boolean uiLin, uiQuad, uiSin;
     public static String valueTextArea;
+    String[] comboBoxOptions = {"Polynom", "Logarithmische/ Exponential", "Trigonometrische", "1/x", "Zusammengesetzte"};
 
     @FXML
     private Label labelA, labelB, labelC, labelX1, labelX2;
@@ -21,19 +22,16 @@ public class GUIController {    //UI control logic
     private TextField textFieldA, textFieldB, textFieldC, textFieldX1, textFieldX2;
 
     @FXML
-    private RadioButton radioButtonLin, radioButtonQuad, radioButtonSin;
-
-    @FXML
     private TextArea textArea = new TextArea();
 
     @FXML
+    ComboBox comboBox = new ComboBox();
+
+    @FXML
     private void initialize() {
-        ToggleGroup tg = new ToggleGroup();
-        radioButtonLin.setToggleGroup(tg);
-        radioButtonQuad.setToggleGroup(tg);
-        radioButtonSin.setToggleGroup(tg);
         textArea.setEditable(false);
         textArea.setText("output");
+        comboBox.setItems(FXCollections.observableArrayList(comboBoxOptions));
     }
 
     @FXML
@@ -50,21 +48,12 @@ public class GUIController {    //UI control logic
             uiTextFieldC = Float.parseFloat(textFieldC.getText());
             uiX1 = Float.parseFloat(textFieldX1.getText());
             uiX2 = Float.parseFloat(textFieldX2.getText());
-            uiLin = radioButtonLin.isSelected();
-            uiQuad = radioButtonQuad.isSelected();
-            uiSin = radioButtonSin.isSelected();
         } catch(NumberFormatException e) {
             System.out.println("NumberFormatException");
         }
 
         if (troubleshooter.correctUserInput()) {
-            if (radioButtonLin.isSelected()) {
-                linear.calculateArea();
-            } else if (radioButtonQuad.isSelected()) {
-                quad.calculateArea();
-            } else if (radioButtonSin.isSelected()) {
-                sinus.calculateArea();
-            }
+
         }
     }
 
