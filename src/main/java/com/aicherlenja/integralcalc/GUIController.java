@@ -38,7 +38,6 @@ public class GUIController {    //UI control logic
     @FXML
     public void handleSubmitBtn() {
         Troubleshooter troubleshooter = new Troubleshooter();
-        Polynom polynom = new Polynom();
 
         //user input
         try {
@@ -53,7 +52,9 @@ public class GUIController {    //UI control logic
         }
 
         if (troubleshooter.correctUserInput()) {
+
             if(comboBox.getValue() == comboBoxOptions[0]) { //polynom
+                Polynom polynom = new Polynom();
                 polynom.calculateArea();
             }
         }

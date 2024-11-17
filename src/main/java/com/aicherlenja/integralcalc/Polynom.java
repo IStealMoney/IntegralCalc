@@ -6,8 +6,13 @@ public class Polynom extends Function { //subclass
 
     GUIController guiCon = new GUIController();
 
+    public Polynom() {
+
+    }
+
     public void calculateArea() {
         // aufleiten
+
 
         solution = 2;
         showSolution();
