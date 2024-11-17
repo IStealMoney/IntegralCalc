@@ -9,4 +9,5 @@ public class Function {     // superclass
 
     //Grenzen für x einsetzen (zuerst obere, dann untere (Subtraktion))
 
+    public static float solution;
 }

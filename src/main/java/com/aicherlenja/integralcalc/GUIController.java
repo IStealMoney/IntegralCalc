@@ -13,7 +13,7 @@ public class GUIController {    //UI control logic
 
     public static float uiTextFieldA, uiTextFieldB, uiTextFieldC, uiX1, uiX2;
     public static String valueTextArea;
-    String[] comboBoxOptions = {"Polynom", "Logarithmische/ Exponential", "Trigonometrische", "1/x", "Zusammengesetzte"};
+    String[] comboBoxOptions = {"Polynomfunktionen" /*ganzrationale Funktionen*/, "Logarithmische/ Exponential", "Trigonometrische", "1/x", "Zusammengesetzte"};
 
     @FXML
     private Label labelA, labelB, labelC, labelX1, labelX2;
