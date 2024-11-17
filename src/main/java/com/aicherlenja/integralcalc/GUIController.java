@@ -10,9 +10,9 @@ import javafx.scene.control.*;
 
 public class GUIController {    //UI control logic
 
-    public float uiTextFieldA, uiTextFieldB, uiTextFieldC, uiX1, uiX2;
-    public boolean uiLin, uiQuad, uiSin;
-    public String valueTextArea;
+    public static float uiTextFieldA, uiTextFieldB, uiTextFieldC, uiX1, uiX2;
+    public static boolean uiLin, uiQuad, uiSin;
+    public static String valueTextArea;
 
     @FXML
     private Label labelA, labelB, labelC, labelX1, labelX2;
@@ -32,6 +32,8 @@ public class GUIController {    //UI control logic
         radioButtonLin.setToggleGroup(tg);
         radioButtonQuad.setToggleGroup(tg);
         radioButtonSin.setToggleGroup(tg);
+        textArea.setEditable(false);
+        textArea.setText("output");
     }
 
     @FXML
@@ -52,7 +54,7 @@ public class GUIController {    //UI control logic
             uiQuad = radioButtonQuad.isSelected();
             uiSin = radioButtonSin.isSelected();
         } catch(NumberFormatException e) {
-            // nichts
+            System.out.println("NumberFormatException");
         }
 
         if (troubleshooter.correctUserInput()) {
@@ -66,13 +68,13 @@ public class GUIController {    //UI control logic
         }
     }
 
-    public void displayErrorX1X2() {
-        valueTextArea = "Error: The value of X2 needs to be greater than the value of X1!";
-        textArea.setText(valueTextArea);
+    @FXML
+    public void displayErrorX1X2(String valueTextArea) {
+        System.out.println("here");
+        textArea.setText("valueTextArea");
     }
 
-    public void displayErrorLinTooMuch() {
-        valueTextArea = "You just need to fill in values for a and b!";
+    public void displayErrorLinTooMuch(String valueTextArea) {
         textArea.setText(valueTextArea);
     }
 

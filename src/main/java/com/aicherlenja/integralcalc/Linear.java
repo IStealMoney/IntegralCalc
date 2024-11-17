@@ -6,6 +6,7 @@ public class Linear extends Function {  //subclass
     public double x1, x2, widthX, heightX, calculatedArea;
 
     public void calculateArea() {
+        System.out.println("i will calculate linear integrals");
         widthX = x2 - x1;
         calculatedArea = 0;
         float solution = 0;
