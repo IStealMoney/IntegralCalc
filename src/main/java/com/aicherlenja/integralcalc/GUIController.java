@@ -11,7 +11,7 @@ import javafx.scene.control.*;
 
 public class GUIController {    //UI control logic
 
-    public static float uiTextFieldA, uiTextFieldB, uiTextFieldC, uiX1, uiX2;
+    public static float uiTextFieldA, uiTextFieldB, uiTextFieldC, uiTextFieldD, uiX1, uiX2;
     public static String valueTextArea;
     String[] comboBoxOptions = {"Polynomfunktionen" /*ganzrationale Funktionen*/, "Logarithmische/ Exponential", "Trigonometrische", "1/x", "Zusammengesetzte"};
 
@@ -19,7 +19,7 @@ public class GUIController {    //UI control logic
     private Label labelA, labelB, labelC, labelX1, labelX2;
 
     @FXML
-    private TextField textFieldA, textFieldB, textFieldC, textFieldX1, textFieldX2;
+    private TextField textFieldA, textFieldB, textFieldC, textFieldD, textFieldX1, textFieldX2;
 
     @FXML
     private TextArea textArea = new TextArea();
@@ -34,18 +34,18 @@ public class GUIController {    //UI control logic
         comboBox.setItems(FXCollections.observableArrayList(comboBoxOptions));
     }
 
+
     @FXML
     public void handleSubmitBtn() {
         Troubleshooter troubleshooter = new Troubleshooter();
-        Linear linear = new Linear();
-        Quad quad = new Quad();
-        Sinus sinus = new Sinus();
+        Polynom polynom = new Polynom();
 
         //user input
         try {
             uiTextFieldA = Float.parseFloat(textFieldA.getText());
             uiTextFieldB = Float.parseFloat(textFieldB.getText());
             uiTextFieldC = Float.parseFloat(textFieldC.getText());
+            uiTextFieldD = Float.parseFloat(textFieldC.getText());
             uiX1 = Float.parseFloat(textFieldX1.getText());
             uiX2 = Float.parseFloat(textFieldX2.getText());
         } catch(NumberFormatException e) {
@@ -53,7 +53,9 @@ public class GUIController {    //UI control logic
         }
 
         if (troubleshooter.correctUserInput()) {
-
+            if(comboBox.getValue() == comboBoxOptions[0]) { //polynom
+                polynom.calculateArea();
+            }
         }
     }
 

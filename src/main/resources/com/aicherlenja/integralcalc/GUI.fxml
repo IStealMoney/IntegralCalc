@@ -10,17 +10,19 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="487.0" prefWidth="280.0">
                <children>
                   <Button fx:id="buttonSubmit" layoutX="70.0" layoutY="525.0" mnemonicParsing="false" onAction="#handleSubmitBtn" prefHeight="37.0" prefWidth="104.0" text="Submit" textAlignment="CENTER" />
-                  <Label fx:id="labelA" layoutX="20.0" layoutY="200.0" text="a:" />
-                  <Label fx:id="labelB" layoutX="20.0" layoutY="250.0" text="b:" />
-                  <Label fx:id="labelC" layoutX="20.0" layoutY="300.0" text="c:" />
-                  <TextField fx:id="textFieldA" layoutX="50.0" layoutY="200.0" />
-                  <TextField fx:id="textFieldB" layoutX="50.0" layoutY="250.0" />
-                  <TextField fx:id="textFieldC" layoutX="50.0" layoutY="300.0" prefHeight="24.0" prefWidth="164.0" />
+                  <Label fx:id="labelA" layoutX="20.0" layoutY="100.0" text="a:" />
+                  <Label fx:id="labelB" layoutX="20.0" layoutY="150.0" text="b:" />
+                  <Label fx:id="labelC" layoutX="20.0" layoutY="200.0" text="c:" />
+                  <TextField fx:id="textFieldA" layoutX="50.0" layoutY="100.0" />
+                  <TextField fx:id="textFieldB" layoutX="50.0" layoutY="150.0" />
+                  <TextField fx:id="textFieldC" layoutX="50.0" layoutY="200.0" prefHeight="24.0" prefWidth="164.0" />
                   <TextField fx:id="textFieldX1" layoutX="50.0" layoutY="375.0" />
                   <TextField fx:id="textFieldX2" layoutX="50.0" layoutY="425.0" />
                   <Label fx:id="labelX1" layoutX="20.0" layoutY="375.0" text="x1:" />
                   <Label fx:id="labelX2" layoutX="20.0" layoutY="425.0" text="x2:" />
-                  <ComboBox fx:id="comboBox" layoutX="50.0" layoutY="100.0" prefHeight="24.0" prefWidth="164.0" />
+                  <ComboBox fx:id="comboBox" layoutX="50.0" layoutY="50.0" prefHeight="24.0" prefWidth="164.0" />
+                  <Label fx:id="labelD" layoutX="20.0" layoutY="250.0" text="d:" />
+                  <TextField fx:id="textFieldD" layoutX="50.0" layoutY="250.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="386.0">
