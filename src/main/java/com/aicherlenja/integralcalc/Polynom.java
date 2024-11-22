@@ -12,7 +12,7 @@ public class Polynom extends Function { //subclass
 
     public void calculateArea() {
         // aufleiten
-
+        System.out.println("asdf");
 
         solution = 2;
         showSolution();
