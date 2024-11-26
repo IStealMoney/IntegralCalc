@@ -13,7 +13,7 @@ public class GUIController {    //UI control logic
 
     public static float uiTextFieldA, uiTextFieldB, uiTextFieldC, uiTextFieldD, uiX1, uiX2;
     public static String valueTextArea;
-    public static String[] comboBoxOptions = {"Polynomfunktionen" /*ganzrationale Funktionen*/, "Logarithmische/ Exponential", "Trigonometrische", "1/x", "Zusammengesetzte"};
+    public static String[] comboBoxOptions = {"Polynomfunktion" /*ganzrationale Funktionen*/, "Logarithmische/ Exponential", "Trigonometrische", "1/x", "Zusammengesetzte"};
 
     @FXML
     private Label labelA, labelB, labelC, labelX1, labelX2;
@@ -52,8 +52,10 @@ public class GUIController {    //UI control logic
         }
 
         if (troubleshooter.correctUserInput()) {
+            System.out.println("Correct user input");
             switch ((String) comboBox.getValue()) {
                 case "Polynomfunktion":
+                    System.out.println("Test");
                     Polynom polynom = new Polynom();
                     polynom.calculateArea();
                     break;
