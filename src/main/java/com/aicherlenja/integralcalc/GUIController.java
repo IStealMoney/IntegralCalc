@@ -55,7 +55,6 @@ public class GUIController {    //UI control logic
             System.out.println("Correct user input");
             switch ((String) comboBox.getValue()) {
                 case "Polynomfunktion":
-                    System.out.println("Test");
                     Polynom polynom = new Polynom();
                     polynom.calculateArea();
                     break;
@@ -71,14 +70,12 @@ public class GUIController {    //UI control logic
                 case "Zusammengesetzte":
 
                     break;
-
             }
         }
     }
 
     @FXML
     public void displayErrorX1X2(String valueTextArea) {
-        System.out.println("here");
         textArea.setText("valueTextArea");
     }
 
