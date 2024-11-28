@@ -22,7 +22,7 @@ public class GUIController {    //UI control logic
     private TextField textFieldA, textFieldB, textFieldC, textFieldD, textFieldX1, textFieldX2;
 
     @FXML
-    private TextArea textArea = new TextArea();
+    private static TextArea textArea = new TextArea();
 
     @FXML
     ComboBox comboBox = new ComboBox();
@@ -86,7 +86,8 @@ public class GUIController {    //UI control logic
         textArea.setText(valueTextArea);
     }
 
-    public void showSolution(float solution) {
+    public static void showSolution(float solution) {
+        System.out.println(solution);
         textArea.setText(String.valueOf(solution));
 
     }

@@ -9,7 +9,7 @@ public class Polynom extends Function { //subclass
     GUIController guiCon = new GUIController();
     public static float baseA;
     public static float expoB;
-
+    public static float solution;
 
     public Polynom() {
 
@@ -18,13 +18,18 @@ public class Polynom extends Function { //subclass
     public void calculateArea() {
         baseA = GUIController.uiTextFieldA;
         expoB = GUIController.uiTextFieldB;
+
         //array.length = hoechster Grad-1
 
         // aufleiten
         expoB = addOneExpo(expoB);
         baseA = divideWithNewExpo(baseA, expoB);
 
-        showSolution(baseA, expoB);
+        // integral
+        solution = calcualteIntegral(baseA, expoB);
+
+        // show solution
+        GUIController.showSolution(solution);
     }
 
     public float addOneExpo(float expoB) {
@@ -38,7 +43,14 @@ public class Polynom extends Function { //subclass
         return baseA;
     }
 
-    public void showSolution(float baseA, float expoB) {
+    public float calcualteIntegral(float baseA, float expoB) {
+        float x2Solution = (float) (baseA * Math.pow(guiCon.uiX2, expoB));
+        float x1Solution = (float) (baseA * Math.pow(guiCon.uiX1, expoB));
+        solution = x2Solution - x1Solution;
+        return solution;
+    }
+
+    public void showSolution(float baseA) {
         System.out.println(baseA + "x^" + expoB);; // + C
     }
 }
