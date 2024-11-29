@@ -6,9 +6,8 @@ public class Polynomial extends Function { //subclass
     // a
     // b = n = exponent
 
-    GUIController guiCon = new GUIController();
-    public static float baseA;
-    public static float expoB;
+    private float baseA;
+    private float expoB;
     public static float solution;
 
     public Polynomial() {
@@ -42,8 +41,8 @@ public class Polynomial extends Function { //subclass
     }
 
     public float calcualteIntegral(float baseA, float expoB) {
-        float x2Solution = (float) (baseA * Math.pow(guiCon.uiX2, expoB));
-        float x1Solution = (float) (baseA * Math.pow(guiCon.uiX1, expoB));
+        float x2Solution = (float) (baseA * Math.pow(GUIController.uiX2, expoB));
+        float x1Solution = (float) (baseA * Math.pow(GUIController.uiX1, expoB));
         solution = x2Solution - x1Solution;
         return solution;
     }

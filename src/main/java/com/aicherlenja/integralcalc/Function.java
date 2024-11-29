@@ -8,4 +8,9 @@ public class Function {     // superclass
 
 
     //Grenzen für x einsetzen (zuerst obere, dann untere (Subtraktion))
+
+    public float calculateArea() {
+
+        return 0;
+    }
 }
