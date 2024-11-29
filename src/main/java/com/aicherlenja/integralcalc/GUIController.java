@@ -5,6 +5,7 @@
 
 package com.aicherlenja.integralcalc;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -16,7 +17,10 @@ public class GUIController {    //UI control logic
     public static String[] comboBoxOptions = {"Polynomfunktion" /*ganzrationale Funktionen*/, "Logarithmische/ Exponential", "Trigonometrische", "1/x", "Zusammengesetzte"};
 
     @FXML
-    private Label labelA, labelB, labelC, labelX1, labelX2, labelSolution;
+    private Label labelA, labelB, labelC, labelX1, labelX2;
+
+    @FXML
+    private Label labelSolution = new Label("solution");
 
     @FXML
     private TextField textFieldA, textFieldB, textFieldC, textFieldD, textFieldX1, textFieldX2;
@@ -83,7 +87,7 @@ public class GUIController {    //UI control logic
     @FXML
     public void showSolution(float solution) {
         System.out.println(solution + "hi");
-        labelSolution.setText(Float.toString(solution));
+        Platform.runLater(() -> labelSolution.setText(Float.toString(solution)));
 
     }
 }
