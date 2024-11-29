@@ -72,16 +72,11 @@ public class GUIController {    //UI control logic
 
                     break;
             }
+            showSolution(solution);
+        } else {
+            troubleshooter.getErrorMessage();
+            labelSolution.setText(troubleshooter.errorMessage);
         }
-        showSolution(solution);
-    }
-
-    public void displayErrorX1X2(String valueTextArea) {
-
-    }
-
-    public void displayErrorLinTooMuch(String valueTextArea) {
-
     }
 
     public void showSolution(float solution) {
