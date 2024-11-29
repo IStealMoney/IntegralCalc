@@ -10,6 +10,8 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import static com.aicherlenja.integralcalc.Polynomial.solution;
+
 public class GUIController {    //UI control logic
 
     public static float uiTextFieldA, uiTextFieldB, uiTextFieldC, uiTextFieldD, uiX1, uiX2;
@@ -20,7 +22,7 @@ public class GUIController {    //UI control logic
     private Label labelA, labelB, labelC, labelX1, labelX2;
 
     @FXML
-    private Label labelSolution = new Label("solution");
+    private Label labelSolution = new Label();
 
     @FXML
     private TextField textFieldA, textFieldB, textFieldC, textFieldD, textFieldX1, textFieldX2;
@@ -30,8 +32,6 @@ public class GUIController {    //UI control logic
 
     @FXML
     private void initialize() {
-        //labelSolution.setText("Your solution");
-        labelSolution = new Label("Your solution");
         comboBox.setItems(FXCollections.observableArrayList(comboBoxOptions));
     }
 
@@ -73,9 +73,9 @@ public class GUIController {    //UI control logic
                     break;
             }
         }
+        showSolution(solution);
     }
 
-    @FXML
     public void displayErrorX1X2(String valueTextArea) {
 
     }
@@ -84,9 +84,7 @@ public class GUIController {    //UI control logic
 
     }
 
-    @FXML
     public void showSolution(float solution) {
-        System.out.println(solution + "hi");
         Platform.runLater(() -> labelSolution.setText(Float.toString(solution)));
 
     }
