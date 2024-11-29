@@ -9,7 +9,7 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="487.0" prefWidth="280.0">
                <children>
-                  <Button fx:id="buttonSubmit" layoutX="70.0" layoutY="525.0" mnemonicParsing="false" onAction="#handleSubmitBtn" prefHeight="37.0" prefWidth="104.0" text="Submit" textAlignment="CENTER" />
+                  <Button fx:id="buttonSubmit" layoutX="70.0" layoutY="525.0" mnemonicParsing="false" onAction="#handleSubmitBtn" text="Submit" textAlignment="CENTER" />
                   <Label fx:id="labelA" layoutX="20.0" layoutY="100.0" text="a:" />
                   <Label fx:id="labelB" layoutX="20.0" layoutY="150.0" text="b:" />
                   <Label fx:id="labelC" layoutX="20.0" layoutY="200.0" text="c:" />
@@ -27,7 +27,7 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="386.0">
                <children>
-                  <TextArea fx:id="textArea" layoutX="28.0" layoutY="525.0" prefHeight="59.0" prefWidth="503.0" />
+                  <Label fx:id="labelSolution" layoutX="96.5" layoutY="525.0" text="Label" />
                </children></AnchorPane>
         </items>
       </SplitPane>

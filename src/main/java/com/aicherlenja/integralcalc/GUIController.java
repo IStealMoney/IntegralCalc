@@ -16,21 +16,18 @@ public class GUIController {    //UI control logic
     public static String[] comboBoxOptions = {"Polynomfunktion" /*ganzrationale Funktionen*/, "Logarithmische/ Exponential", "Trigonometrische", "1/x", "Zusammengesetzte"};
 
     @FXML
-    private Label labelA, labelB, labelC, labelX1, labelX2;
+    private Label labelA, labelB, labelC, labelX1, labelX2, labelSolution;
 
     @FXML
     private TextField textFieldA, textFieldB, textFieldC, textFieldD, textFieldX1, textFieldX2;
-
-    @FXML
-    private static TextArea textArea = new TextArea();
 
     @FXML
     ComboBox comboBox = new ComboBox();
 
     @FXML
     private void initialize() {
-        textArea.setEditable(false);
-        textArea.setText("output");
+        //labelSolution.setText("Your solution");
+        labelSolution = new Label("Your solution");
         comboBox.setItems(FXCollections.observableArrayList(comboBoxOptions));
     }
 
@@ -55,8 +52,8 @@ public class GUIController {    //UI control logic
             System.out.println("Correct user input");
             switch ((String) comboBox.getValue()) {
                 case "Polynomfunktion":
-                    Polynom polynom = new Polynom();
-                    polynom.calculateArea();
+                    Polynomial polynomial = new Polynomial();
+                    polynomial.calculateArea(uiTextFieldA, uiTextFieldB, uiTextFieldC, uiTextFieldD, uiX1, uiX2);
                     break;
                 case "Logarithmische/ Exponential":
 
@@ -76,16 +73,17 @@ public class GUIController {    //UI control logic
 
     @FXML
     public void displayErrorX1X2(String valueTextArea) {
-        textArea.setText("valueTextArea");
+
     }
 
     public void displayErrorLinTooMuch(String valueTextArea) {
-        textArea.setText(valueTextArea);
+
     }
 
-    public static void showSolution(float solution) {
-        System.out.println(solution);
-        textArea.setText(String.valueOf(solution));
+    @FXML
+    public void showSolution(float solution) {
+        System.out.println(solution + "hi");
+        labelSolution.setText(Float.toString(solution));
 
     }
 }
