@@ -10,13 +10,14 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="598.0" prefWidth="230.0">
                <children>
                   <ComboBox fx:id="comboBox" layoutX="19.0" layoutY="45.0" prefHeight="24.0" prefWidth="200.0" />
-                  <TextField fx:id="functionField" layoutX="19.0" layoutY="100.0" prefHeight="26.0" prefWidth="200.0" />
+                  <TextField fx:id="functionField" layoutX="50.0" layoutY="100.0" prefHeight="26.0" prefWidth="169.0" />
                   <TextField fx:id="textFieldX1" layoutX="50.0" layoutY="150.0" prefHeight="26.0" prefWidth="169.0" />
                   <Label fx:id="labelX1" layoutX="20.0" layoutY="150.0" text="x1:" />
                   <TextField fx:id="textFieldX2" layoutX="50.0" layoutY="200.0" prefHeight="26.0" prefWidth="169.0" />
                   <Label fx:id="labelX2" layoutX="20.0" layoutY="200.0" text="x2:" />
                   <Button fx:id="buttonSubmit" layoutX="50.0" layoutY="250.0" mnemonicParsing="false" onAction="#handleSubmitBtn" prefHeight="26.0" prefWidth="169.0" text="Submit" textAlignment="CENTER" />
                   <TextArea fx:id="textArea" layoutX="19.0" layoutY="300.0" prefHeight="280.0" prefWidth="200.0" />
+                  <Label layoutX="20.0" layoutY="104.0" text="f(x)=" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="386.0" />
