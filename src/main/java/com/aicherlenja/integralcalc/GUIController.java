@@ -14,18 +14,18 @@ import static com.aicherlenja.integralcalc.Polynomial.solution;
 
 public class GUIController {    //UI control logic
 
-    public static float uiTextFieldA, uiTextFieldB, uiTextFieldC, uiTextFieldD, uiX1, uiX2;
-    public static String valueTextArea;
+    public static double uiX1, uiX2;
+    public static String function, selectedComboBox;
     public static String[] comboBoxOptions = {"Polynomfunktion" /*ganzrationale Funktionen*/, "Logarithmische/ Exponential", "Trigonometrische", "1/x", "Zusammengesetzte"};
 
     @FXML
-    private Label labelA, labelB, labelC, labelX1, labelX2;
+    private TextArea textArea = new TextArea();
 
     @FXML
     private Label labelSolution = new Label();
 
     @FXML
-    private TextField textFieldA, textFieldB, textFieldC, textFieldD, textFieldX1, textFieldX2;
+    private TextField textFieldX1, textFieldX2, functionField;
 
     @FXML
     ComboBox comboBox = new ComboBox();
@@ -42,36 +42,20 @@ public class GUIController {    //UI control logic
 
         //user input
         try {
-            uiTextFieldA = Float.parseFloat(textFieldA.getText());
-            uiTextFieldB = Float.parseFloat(textFieldB.getText());
-            uiTextFieldC = Float.parseFloat(textFieldC.getText());
-            uiTextFieldD = Float.parseFloat(textFieldC.getText());
-            uiX1 = Float.parseFloat(textFieldX1.getText());
-            uiX2 = Float.parseFloat(textFieldX2.getText());
+            function = functionField.getText();
+            selectedComboBox = (String) comboBox.getValue();
+            uiX1 = Double.parseDouble(textFieldX1.getText());
+            uiX2 = Double.parseDouble(textFieldX2.getText());
         } catch(NumberFormatException e) {
-            System.out.println("NumberFormatException");
+            Platform.runLater(() -> labelSolution.setText("NumberFormatException"));
         }
 
         if (troubleshooter.correctUserInput()) {
             System.out.println("Correct user input");
-            switch ((String) comboBox.getValue()) {
-                case "Polynomfunktion":
-                    Polynomial polynomial = new Polynomial();
-                    polynomial.calculateArea(uiTextFieldA, uiTextFieldB, uiTextFieldC, uiTextFieldD, uiX1, uiX2);
-                    break;
-                case "Logarithmische/ Exponential":
 
-                    break;
-                case "Trigonometrische":
+            //separates function and calls specific function method
+            CompositeFunction.separateFunction();
 
-                    break;
-                case "1/x":
-
-                    break;
-                case "Zusammengesetzte":
-
-                    break;
-            }
             showSolution(solution);
         } else {
             troubleshooter.getErrorMessage();
@@ -79,8 +63,8 @@ public class GUIController {    //UI control logic
         }
     }
 
-    public void showSolution(float solution) {
-        Platform.runLater(() -> labelSolution.setText(Float.toString(solution)));
+    public void showSolution(double solution) {
+        Platform.runLater(() -> labelSolution.setText(Double.toString(solution)));
 
     }
 }

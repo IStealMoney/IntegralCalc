@@ -1,6 +1,6 @@
 package com.aicherlenja.integralcalc;
 
-public class Linear {
+public class Linear implements FunctionComponent {
 
     // f(x) = ax + b
 
@@ -12,5 +12,21 @@ public class Linear {
 
 
         return 0;
+    }
+
+
+    @Override
+    public void integrateComps() {
+
+    }
+
+    @Override
+    public void linkComps() {
+
+    }
+
+    @Override
+    public void calculateIntegratedFunctionX1X2() {
+
     }
 }

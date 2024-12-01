@@ -1,49 +1,68 @@
 package com.aicherlenja.integralcalc;
 
-public class Polynomial extends Function { //subclass
+public class Polynomial implements FunctionComponent { //subclass
 
     // f(x) = a_n * x^n + a_n-1 * x^n-1 ...
-    // a
+    // a = coefficient
     // b = n = exponent
 
-    private float baseA;
-    private float expoB;
-    public static float solution;
+    private double coefficient;
+    private double exponent;
+    public static double solution;
+
+    public Polynomial(double coefficient, double exponent) {
+        this.coefficient = coefficient;
+        this.exponent = exponent;
+    }
 
     public Polynomial() {
 
     }
 
-    public float calculateArea(float uiTextFieldA, float uiTextFieldB, float uiTextFieldC, float uiTextFieldD, float uiX1, float uiX2) {
-        baseA = uiTextFieldA;
-        expoB = uiTextFieldB;
+
+    public double calculateArea(double uiX1, double uiX2) {
 
         //array.length = hoechster Grad-1
 
         // aufleiten
-        expoB = addOneExpo(expoB);
-        baseA = divideWithNewExpo(baseA, expoB);
+        exponent = addOneExpo(exponent);
+        coefficient = divideWithNewExpo(coefficient, exponent);
 
         // integral
-        solution = calcualteIntegral(baseA, expoB);
+        solution = calcualteIntegral(coefficient, exponent);
 
         return solution;
     }
 
-    public float addOneExpo(float expoB) {
+    public double addOneExpo(double expoB) {
         expoB++;
         return expoB;
     }
 
-    public float divideWithNewExpo(float baseA, float expoB) {
+    public double divideWithNewExpo(double baseA, double expoB) {
         baseA = baseA / expoB;
         return baseA;
     }
 
-    public float calcualteIntegral(float baseA, float expoB) {
-        float x2Solution = (float) (baseA * Math.pow(GUIController.uiX2, expoB));
-        float x1Solution = (float) (baseA * Math.pow(GUIController.uiX1, expoB));
+    public double calcualteIntegral(double baseA, double expoB) {
+        double x2Solution = baseA * Math.pow(GUIController.uiX2, expoB);
+        double x1Solution = baseA * Math.pow(GUIController.uiX1, expoB);
         solution = x2Solution - x1Solution;
         return solution;
+    }
+
+    @Override
+    public void integrateComps() {
+
+    }
+
+    @Override
+    public void linkComps() {
+
+    }
+
+    @Override
+    public void calculateIntegratedFunctionX1X2() {
+
     }
 }
