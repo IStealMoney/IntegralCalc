@@ -65,7 +65,6 @@ public class CompositeFunction { // manages function components
         if (s.contains("x")) {
             System.out.println("enthält x");
             if (s.contains("^")) {
-                System.out.println("yes");
                 exponentPart = s.substring(s.indexOf("^")+1, s.length()); // whole exponent (e.g. 2x)
                 System.out.println(s.indexOf("^"));
                 System.out.println(s.length());
@@ -78,46 +77,19 @@ public class CompositeFunction { // manages function components
             } else {
                 exponent = 1;
             }
-            System.out.println("Exponent: " + exponent);
         } else {
-            System.out.println("Summand ohne x: " + s);
-            s = (s + "x");
-            System.out.println("Summand mit x: " + s);
-            coefficient = findCoefficient(s);
-            coefficient = Float.parseFloat(s.substring(0, s.indexOf("x")));
-            System.out.println("Coefficient: " + coefficient);
-            exponent = 0;
+//            System.out.println("Summand ohne x: " + s);
+//            coefficient = Float.parseFloat(s);
+//            s = (s + "x");
+//            System.out.println("Summand mit x: " + s);
+//            System.out.println("Coefficient: " + coefficient);
+            exponent = 1;
         }
+        System.out.println("Exponent: " + exponent);
         return exponent;
     }
 
     public void evaluateWholeFunction() {
 
-    }
-
-    private float powerExponentToFloat(char s) {
-        switch (s) {
-            case '⁰':
-                return 0;
-            case '¹':
-                return 1;
-            case '²':
-                return 2;
-            case '³':
-                return 3;
-            case '⁴':
-                return 4;
-            case '⁵':
-                return 5;
-            case '⁶':
-                return 6;
-            case '⁷':
-                return 7;
-            case '⁸':
-                return 8;
-            case '⁹':
-                return 9;
-        }
-        throw new NumberFormatException("Invalid exponent format: " + s);
     }
 }
