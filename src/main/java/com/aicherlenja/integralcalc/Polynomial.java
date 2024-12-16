@@ -15,28 +15,16 @@ public class Polynomial implements FunctionComponent { //subclass
         this.exponent = exponent;
     }
 
-    public Polynomial() {
-
-    }
-
 
     public double calculateArea(double uiX1, double uiX2) {
-
-        //array.length = hoechster Grad-1
-
-        // aufleiten
-        exponent = addOneExpo(exponent);
-        coefficient = divideWithNewExpo(coefficient, exponent);
+        integrateComps();
+        linkComps();
+        solution = calculateIntegratedFunctionX1X2();
 
         // integral
-        solution = calcualteIntegral(coefficient, exponent);
+        //solution = calcualteIntegral(coefficient, exponent);
 
         return solution;
-    }
-
-    public double addOneExpo(double expoB) {
-        expoB++;
-        return expoB;
     }
 
     public double divideWithNewExpo(double baseA, double expoB) {
@@ -44,16 +32,11 @@ public class Polynomial implements FunctionComponent { //subclass
         return baseA;
     }
 
-    public double calcualteIntegral(double baseA, double expoB) {
-        double x2Solution = baseA * Math.pow(GUIController.uiX2, expoB);
-        double x1Solution = baseA * Math.pow(GUIController.uiX1, expoB);
-        solution = x2Solution - x1Solution;
-        return solution;
-    }
-
     @Override
     public void integrateComps() {
-
+        System.out.println("Exponent von Polynomial.java: " + exponent);
+        exponent = addOneExpo(exponent);
+        coefficient = divideWithNewExpo(coefficient, exponent);
     }
 
     @Override
@@ -62,7 +45,13 @@ public class Polynomial implements FunctionComponent { //subclass
     }
 
     @Override
-    public void calculateIntegratedFunctionX1X2() {
+    public double calculateIntegratedFunctionX1X2() {
 
+        return 0;
+    }
+
+    public double addOneExpo(double expoB) {
+        expoB++;
+        return expoB;
     }
 }

@@ -14,7 +14,6 @@ public class CompositeFunction { // manages function components
 
         for (String s : functionSplit) {
             s = s.trim();
-            //s = s.replaceAll("\\s", "");
 
             System.out.println("Eingegeben: " + s);
 
@@ -25,7 +24,7 @@ public class CompositeFunction { // manages function components
             // calculate integral for specific function type
             switch (GUIController.selectedComboBox) {
                 case "Polynomfunktion":
-                    Polynomial polynomial = new Polynomial();
+                    Polynomial polynomial = new Polynomial(coefficient, exponent);
                     polynomial.calculateArea(uiX1, uiX2);
                     break;
                 case "Logarithmische/ Exponential":
