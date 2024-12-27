@@ -6,7 +6,7 @@ import static com.aicherlenja.integralcalc.GUIController.uiX1;
 import static com.aicherlenja.integralcalc.GUIController.uiX2;
 
 public class CompositeFunction { // manages function components
-    public static float coefficient, exponent;
+    public static double coefficient, exponent;
     public static String exponentPart;
 
     public static void separateFunction() {
@@ -43,7 +43,7 @@ public class CompositeFunction { // manages function components
         }
     }
 
-    private static float findCoefficient(String s) {
+    private static double findCoefficient(String s) {
         if (s.substring(0,1).equals("x") ||
                 (s.substring(0,1).equals("+") && s.substring(1,2).equals("x"))) {
             coefficient = 1;
@@ -60,7 +60,7 @@ public class CompositeFunction { // manages function components
         return coefficient;
     }
 
-    private static float findExponent(String s) {
+    private static double findExponent(String s) {
         if (s.contains("x")) {
             System.out.println("enthält x");
             if (s.contains("^")) {
@@ -73,6 +73,7 @@ public class CompositeFunction { // manages function components
                 //} else {
                     //throw new NumberFormatException("Invalid exponent format: " + exponentPart);
                 //}
+                exponent = Float.parseFloat(exponentPart);
             } else {
                 exponent = 1;
             }

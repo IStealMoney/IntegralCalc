@@ -27,21 +27,15 @@ public class Polynomial implements FunctionComponent { //subclass
         return solution;
     }
 
-    public double divideWithNewExpo(double baseA, double expoB) {
-        baseA = baseA / expoB;
-        return baseA;
-    }
-
     @Override
     public void integrateComps() {
-        System.out.println("Exponent von Polynomial.java: " + exponent);
         exponent = addOneExpo(exponent);
         coefficient = divideWithNewExpo(coefficient, exponent);
     }
 
     @Override
     public void linkComps() {
-
+        System.out.println("Integrated function: " + coefficient + "x^" + exponent);
     }
 
     @Override
@@ -50,8 +44,13 @@ public class Polynomial implements FunctionComponent { //subclass
         return 0;
     }
 
-    public double addOneExpo(double expoB) {
-        expoB++;
-        return expoB;
+    public double addOneExpo(double exponent) {
+        exponent++;
+        return exponent;
+    }
+
+    public double divideWithNewExpo(double coefficient, double exponent) {
+        coefficient = coefficient / exponent;
+        return coefficient;
     }
 }
