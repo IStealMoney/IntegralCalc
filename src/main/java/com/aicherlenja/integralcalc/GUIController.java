@@ -16,7 +16,7 @@ public class GUIController {    //UI control logic
 
     public static double uiX1, uiX2;
     public static String function, selectedComboBox;
-    public static String[] comboBoxOptions = {"Polynomfunktion" /*ganzrationale Funktionen*/, "Logarithmische/ Exponential", "Trigonometrische", "1/x", "Zusammengesetzte"};
+    public static String[] comboBoxOptions = {"Polynomial" /*ganzrationale Funktionen*/, "Logarithmische/ Exponential", "Trigonometrische", "1/x", "Zusammengesetzte"};
 
     @FXML
     private TextArea textArea = new TextArea();

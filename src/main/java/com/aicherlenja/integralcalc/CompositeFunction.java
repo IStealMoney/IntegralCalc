@@ -23,7 +23,7 @@ public class CompositeFunction { // manages function components
 
             // calculate integral for specific function type
             switch (GUIController.selectedComboBox) {
-                case "Polynomfunktion":
+                case "Polynomial":
                     Polynomial polynomial = new Polynomial(coefficient, exponent);
                     polynomial.calculateArea(uiX1, uiX2);
                     break;
