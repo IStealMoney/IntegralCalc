@@ -1,5 +1,7 @@
 package com.aicherlenja.integralcalc;
 
+import static java.lang.Math.pow;
+
 public class Polynomial implements FunctionComponent { //subclass
 
     // f(x) = a_n * x^n + a_n-1 * x^n-1 ...
@@ -19,11 +21,8 @@ public class Polynomial implements FunctionComponent { //subclass
     public double calculateArea(double uiX1, double uiX2) {
         integrateComps();
         linkComps();
-        solution = calculateIntegratedFunctionX1X2();
-
-        // integral
-        //solution = calcualteIntegral(coefficient, exponent);
-
+        solution = calculateIntegratedFunctionX1X2(uiX1, uiX2);
+        System.out.println("area: " + solution);
         return solution;
     }
 
@@ -39,9 +38,9 @@ public class Polynomial implements FunctionComponent { //subclass
     }
 
     @Override
-    public double calculateIntegratedFunctionX1X2() {
-
-        return 0;
+    public double calculateIntegratedFunctionX1X2(double uiX1, double uiX2) {
+        solution = (coefficient * pow(uiX2, exponent)) - (coefficient * pow(uiX1, exponent));
+        return solution;
     }
 
     public double addOneExpo(double exponent) {

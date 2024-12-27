@@ -52,22 +52,18 @@ public class CompositeFunction { // manages function components
         } else {
             coefficient = Float.parseFloat(s.substring(0, s.indexOf("x")));
         }
-        //test
-        System.out.println("Coefficient: " + coefficient);
-        for (int i = 0; i < s.length(); i++) {
-            System.out.println(s.charAt(i) + " ");
-        }
+//        //test
+//        System.out.println("Coefficient: " + coefficient);
+//        for (int i = 0; i < s.length(); i++) {
+//            System.out.println(s.charAt(i) + " ");
+//        }
         return coefficient;
     }
 
     private static double findExponent(String s) {
         if (s.contains("x")) {
-            System.out.println("enthält x");
             if (s.contains("^")) {
                 exponentPart = s.substring(s.indexOf("^")+1, s.length()); // whole exponent (e.g. 2x)
-                System.out.println(s.indexOf("^"));
-                System.out.println(s.length());
-                System.out.println("ExponentPart: " + exponentPart);
                 //if (exponentPart.matches("[-+]?\\d*\\.?\\d+")) {
                     //exponent = Float.parseFloat(exponentPart);
                 //} else {
@@ -85,7 +81,6 @@ public class CompositeFunction { // manages function components
 //            System.out.println("Coefficient: " + coefficient);
             exponent = 1;
         }
-        System.out.println("Exponent: " + exponent);
         return exponent;
     }
 

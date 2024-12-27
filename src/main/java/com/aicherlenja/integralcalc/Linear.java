@@ -26,7 +26,7 @@ public class Linear implements FunctionComponent {
     }
 
     @Override
-    public double calculateIntegratedFunctionX1X2() {
+    public double calculateIntegratedFunctionX1X2(double uiX1, double uiX2) {
 
         return 0;
     }
