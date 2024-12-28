@@ -10,19 +10,14 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import static com.aicherlenja.integralcalc.Polynomial.solution;
-
 public class GUIController {    //UI control logic
 
     public static double uiX1, uiX2;
-    public static String function, selectedComboBox;
+    public static String function, selectedComboBox, errorMessage;
     public static String[] comboBoxOptions = {"Polynomial" /*ganzrationale Funktionen*/, "Logarithmische/ Exponential", "Trigonometrische", "1/x", "Zusammengesetzte"};
 
     @FXML
     private TextArea textArea = new TextArea();
-
-    @FXML
-    private Label labelSolution = new Label();
 
     @FXML
     private TextField textFieldX1, textFieldX2, functionField;
@@ -47,24 +42,22 @@ public class GUIController {    //UI control logic
             uiX1 = Double.parseDouble(textFieldX1.getText());
             uiX2 = Double.parseDouble(textFieldX2.getText());
         } catch(NumberFormatException e) {
-            Platform.runLater(() -> labelSolution.setText("NumberFormatException"));
+            Platform.runLater(() -> textArea.setText("NumberFormatException"));
         }
 
-        if (troubleshooter.correctUserInput()) {
-            System.out.println("Correct user input");
-
-            //separates function and calls specific function method
-            CompositeFunction.separateFunction();
-
-            showSolution(solution);
+        if (troubleshooter.correctUserInput(uiX1, uiX2)) {
+            CompositeFunction.separateFunction();   //separates function and calls specific function method
+            showSolution(CompositeFunction.solutionArea, CompositeFunction.evaluatedFunction);
         } else {
-            troubleshooter.getErrorMessage();
-            labelSolution.setText(troubleshooter.errorMessage);
+            errorMessage = troubleshooter.getErrorMessage();
+            textArea.setText(errorMessage);
+            System.out.println(errorMessage);
         }
     }
 
-    public void showSolution(double solution) {
-        Platform.runLater(() -> labelSolution.setText(Double.toString(solution)));
-
+    public void showSolution(double solutionArea, String evaluatedFunction) {
+        System.out.println(evaluatedFunction);
+        System.out.println(solutionArea);
+        Platform.runLater(() -> textArea.setText("Area: " + (Double.toString(solutionArea)) + "\n Integrated function: " + evaluatedFunction));
     }
 }

@@ -1,13 +1,11 @@
 package com.aicherlenja.integralcalc;
 
-import javafx.application.Platform;
-
 import static com.aicherlenja.integralcalc.GUIController.uiX1;
 import static com.aicherlenja.integralcalc.GUIController.uiX2;
 
 public class CompositeFunction { // manages function components
-    public static double coefficient, exponent;
-    public static String exponentPart;
+    public static double coefficient, exponent, solutionArea;
+    public static String exponentPart, evaluatedFunction;
 
     public static void separateFunction() {
         String[] functionSplit = GUIController.function.split("(?=[+-])");
@@ -20,12 +18,12 @@ public class CompositeFunction { // manages function components
             coefficient = findCoefficient(s);
             exponent = findExponent(s);
 
-
             // calculate integral for specific function type
             switch (GUIController.selectedComboBox) {
                 case "Polynomial":
                     Polynomial polynomial = new Polynomial(coefficient, exponent);
-                    polynomial.calculateArea(uiX1, uiX2);
+                    solutionArea = polynomial.handleCalculation(uiX1, uiX2);
+                    evaluatedFunction = polynomial.evaluateFunction();
                     break;
                 case "Logarithmische/ Exponential":
 
@@ -40,6 +38,7 @@ public class CompositeFunction { // manages function components
 
                     break;
             }
+            GUIController.showSolution(solutionArea, evaluatedFunction);
         }
     }
 
@@ -52,11 +51,6 @@ public class CompositeFunction { // manages function components
         } else {
             coefficient = Float.parseFloat(s.substring(0, s.indexOf("x")));
         }
-//        //test
-//        System.out.println("Coefficient: " + coefficient);
-//        for (int i = 0; i < s.length(); i++) {
-//            System.out.println(s.charAt(i) + " ");
-//        }
         return coefficient;
     }
 
@@ -74,17 +68,8 @@ public class CompositeFunction { // manages function components
                 exponent = 1;
             }
         } else {
-//            System.out.println("Summand ohne x: " + s);
-//            coefficient = Float.parseFloat(s);
-//            s = (s + "x");
-//            System.out.println("Summand mit x: " + s);
-//            System.out.println("Coefficient: " + coefficient);
             exponent = 1;
         }
         return exponent;
-    }
-
-    public void evaluateWholeFunction() {
-
     }
 }

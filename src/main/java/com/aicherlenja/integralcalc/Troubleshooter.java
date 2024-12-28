@@ -3,13 +3,13 @@ package com.aicherlenja.integralcalc;
 public class Troubleshooter {
 
     public static String errorMessage = "";
-    private boolean X2greaterX1;
+    private static boolean X2greaterX1;
 
-    public boolean correctUserInput()  {
+    public boolean correctUserInput(double uiX1, double uiX2)  {
         GUIController guiCon = new GUIController();
 
         // x1 greater x2
-        if(guiCon.uiX1 > guiCon.uiX2) {
+        if(uiX1 > uiX2) {
             X2greaterX1 = true;
             return false;
         }
@@ -19,8 +19,8 @@ public class Troubleshooter {
 
     public String getErrorMessage() {
         if (X2greaterX1) {
-            errorMessage = "Error: X2 needs to be greater than X1!";
+             return "Error: X2 needs to be greater than X1!";
         }
-        return errorMessage;
+        return "lol";
     }
 }

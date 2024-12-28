@@ -8,12 +8,11 @@ public class Linear implements FunctionComponent {
 
     }
 
-    public float calculateArea() {
 
-
+    @Override
+    public double handleCalculation(double uiX1, double uiX2) {
         return 0;
     }
-
 
     @Override
     public void integrateComps() {
@@ -21,13 +20,13 @@ public class Linear implements FunctionComponent {
     }
 
     @Override
-    public void linkComps() {
-
-    }
-
-    @Override
     public double calculateIntegratedFunctionX1X2(double uiX1, double uiX2) {
 
         return 0;
+    }
+
+    @Override
+    public String evaluateFunction() {
+        return "";
     }
 }

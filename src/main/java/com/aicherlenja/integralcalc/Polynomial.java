@@ -1,29 +1,27 @@
 package com.aicherlenja.integralcalc;
 
+import static com.aicherlenja.integralcalc.CompositeFunction.solutionArea;
 import static java.lang.Math.pow;
 
 public class Polynomial implements FunctionComponent { //subclass
 
     // f(x) = a_n * x^n + a_n-1 * x^n-1 ...
-    // a = coefficient
-    // b = n = exponent
 
     private double coefficient;
     private double exponent;
-    public static double solution;
 
     public Polynomial(double coefficient, double exponent) {
         this.coefficient = coefficient;
         this.exponent = exponent;
     }
 
-
-    public double calculateArea(double uiX1, double uiX2) {
+    @Override
+    public double handleCalculation(double uiX1, double uiX2) {
         integrateComps();
-        linkComps();
-        solution = calculateIntegratedFunctionX1X2(uiX1, uiX2);
-        System.out.println("area: " + solution);
-        return solution;
+        solutionArea = calculateIntegratedFunctionX1X2(uiX1, uiX2);
+        evaluateFunction();
+        System.out.println("area: " + solutionArea);
+        return solutionArea;
     }
 
     @Override
@@ -33,14 +31,14 @@ public class Polynomial implements FunctionComponent { //subclass
     }
 
     @Override
-    public void linkComps() {
-        System.out.println("Integrated function: " + coefficient + "x^" + exponent);
+    public double calculateIntegratedFunctionX1X2(double uiX1, double uiX2) {
+        solutionArea = (coefficient * pow(uiX2, exponent)) - (coefficient * pow(uiX1, exponent));
+        return solutionArea;
     }
 
     @Override
-    public double calculateIntegratedFunctionX1X2(double uiX1, double uiX2) {
-        solution = (coefficient * pow(uiX2, exponent)) - (coefficient * pow(uiX1, exponent));
-        return solution;
+    public String evaluateFunction() {
+        return coefficient + "x^" + exponent;
     }
 
     public double addOneExpo(double exponent) {
