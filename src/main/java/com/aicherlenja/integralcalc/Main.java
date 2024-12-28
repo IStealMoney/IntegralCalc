@@ -17,6 +17,9 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 public class Main extends Application {
+
+    private static GUIController controller;
+
     @Override
     public void start(Stage stage) throws IOException {
 
@@ -40,5 +43,12 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+
+    public static GUIController getController() {
+        if (controller == null) {
+            controller = new GUIController();
+        }
+        return controller;
     }
 }

@@ -38,7 +38,7 @@ public class CompositeFunction { // manages function components
 
                     break;
             }
-            GUIController.showSolution(solutionArea, evaluatedFunction);
+            Main.getController().showSolution(solutionArea, evaluatedFunction);
         }
     }
 
@@ -49,7 +49,7 @@ public class CompositeFunction { // manages function components
         } else if (s.substring(0,1).equals("-") && s.substring(1,2).equals("x")) {
             coefficient = -1;
         } else {
-            coefficient = Float.parseFloat(s.substring(0, s.indexOf("x")));
+            coefficient = Double.parseDouble(s.substring(0, s.indexOf("x")));
         }
         return coefficient;
     }
