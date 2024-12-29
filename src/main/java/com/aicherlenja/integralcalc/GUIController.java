@@ -46,7 +46,8 @@ public class GUIController {    //UI control logic
         }
 
         if (troubleshooter.correctUserInput(uiX1, uiX2)) {
-            CompositeFunction.separateFunction();   //separates function and calls specific function method
+            CompositeFunction compFunc = new CompositeFunction();
+            compFunc.separateFunction();   //separates function and calls specific function method
             showSolution(CompositeFunction.solutionArea, CompositeFunction.evaluatedFunction);
         } else {
             errorMessage = troubleshooter.getErrorMessage();

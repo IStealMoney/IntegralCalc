@@ -4,10 +4,20 @@ import static com.aicherlenja.integralcalc.GUIController.uiX1;
 import static com.aicherlenja.integralcalc.GUIController.uiX2;
 
 public class CompositeFunction { // manages function components
-    public static double coefficient, exponent, solutionArea;
-    public static String exponentPart, evaluatedFunction;
+    public static double coefficient, exponent, solutionArea, solutionAreaPartX1, solutionAreaPartX2;
+    public static String exponentPart, evaluatedFunction, simpEvalFunc;
 
+    CompositeFunction() {
+        coefficient = 0;
+        exponent = 0;
+        solutionArea = 0;
+        solutionAreaPartX1 = 0;
+        solutionAreaPartX2 = 0;
+        exponentPart = "";
+        evaluatedFunction = "";
+    }
     public static void separateFunction() {
+        solutionArea = 0;
         String[] functionSplit = GUIController.function.split("(?=[+-])");
 
         for (String s : functionSplit) {
@@ -21,9 +31,12 @@ public class CompositeFunction { // manages function components
             // calculate integral for specific function type
             switch (GUIController.selectedComboBox) {
                 case "Polynomial":
-                    Polynomial polynomial = new Polynomial(coefficient, exponent);
-                    solutionArea = polynomial.handleCalculation(uiX1, uiX2);
-                    evaluatedFunction = polynomial.evaluateFunction();
+                    Polynomial poly = new Polynomial(coefficient, exponent);
+                    poly.integrateComps();
+                    solutionAreaPartX1 += poly.calculateFuncPartX1(solutionAreaPartX1, uiX1); // area
+                    solutionAreaPartX2 += poly.calculateFuncPartX2(solutionAreaPartX2, uiX2);
+                    evaluatedFunction = (evaluatedFunction + " " + poly.evaluateFunction());  //integrated function
+                    simpEvalFunc = poly.simplifyFunc(evaluatedFunction, simpEvalFunc); //simplify
                     break;
                 case "Logarithmische/ Exponential":
 
@@ -38,15 +51,16 @@ public class CompositeFunction { // manages function components
 
                     break;
             }
-            Main.getController().showSolution(solutionArea, evaluatedFunction);
         }
+        solutionArea = calculateSolutionArea(solutionAreaPartX1, solutionAreaPartX2);
+        Main.getController().showSolution(solutionArea, evaluatedFunction);
     }
 
     private static double findCoefficient(String s) {
-        if (s.substring(0,1).equals("x") ||
-                (s.substring(0,1).equals("+") && s.substring(1,2).equals("x"))) {
+        if (s.charAt(0) == 'x' ||
+                (s.charAt(0) == '+' && s.charAt(1) == 'x')) {
             coefficient = 1;
-        } else if (s.substring(0,1).equals("-") && s.substring(1,2).equals("x")) {
+        } else if (s.charAt(0) == '-' && s.charAt(1) == 'x') {
             coefficient = -1;
         } else {
             coefficient = Double.parseDouble(s.substring(0, s.indexOf("x")));
@@ -63,7 +77,7 @@ public class CompositeFunction { // manages function components
                 //} else {
                     //throw new NumberFormatException("Invalid exponent format: " + exponentPart);
                 //}
-                exponent = Float.parseFloat(exponentPart);
+                exponent = Double.parseDouble(exponentPart);
             } else {
                 exponent = 1;
             }
@@ -71,5 +85,9 @@ public class CompositeFunction { // manages function components
             exponent = 1;
         }
         return exponent;
+    }
+
+    private static double calculateSolutionArea(double solutionAreaPartX1, double solutionAreaPartX2) {
+        return solutionAreaPartX2 - solutionAreaPartX1;
     }
 }

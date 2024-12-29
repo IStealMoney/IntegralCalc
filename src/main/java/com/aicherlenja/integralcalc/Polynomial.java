@@ -9,19 +9,11 @@ public class Polynomial implements FunctionComponent { //subclass
 
     private double coefficient;
     private double exponent;
+    public static String evaluatedFuncPart, evaluatedFuncSX1, evaluatedFuncSX2;
 
     public Polynomial(double coefficient, double exponent) {
         this.coefficient = coefficient;
         this.exponent = exponent;
-    }
-
-    @Override
-    public double handleCalculation(double uiX1, double uiX2) {
-        integrateComps();
-        solutionArea = calculateIntegratedFunctionX1X2(uiX1, uiX2);
-        evaluateFunction();
-        System.out.println("area: " + solutionArea);
-        return solutionArea;
     }
 
     @Override
@@ -31,14 +23,19 @@ public class Polynomial implements FunctionComponent { //subclass
     }
 
     @Override
-    public double calculateIntegratedFunctionX1X2(double uiX1, double uiX2) {
-        solutionArea = (coefficient * pow(uiX2, exponent)) - (coefficient * pow(uiX1, exponent));
-        return solutionArea;
+    public String evaluateFunction() {
+        evaluatedFuncPart = coefficient + "x^" + exponent;
+        return evaluatedFuncPart;
     }
 
-    @Override
-    public String evaluateFunction() {
-        return coefficient + "x^" + exponent;
+    double calculateFuncPartX1(double solutionAreaPartX1, double uiX1) {
+        solutionAreaPartX1 = (coefficient * pow(uiX1, exponent));
+        return solutionAreaPartX1;
+    }
+
+    double calculateFuncPartX2(double solutionAreaPartX2, double uiX2) {
+        solutionAreaPartX2 = (coefficient * pow(uiX2, exponent));
+        return solutionAreaPartX2;
     }
 
     public double addOneExpo(double exponent) {
@@ -49,5 +46,10 @@ public class Polynomial implements FunctionComponent { //subclass
     public double divideWithNewExpo(double coefficient, double exponent) {
         coefficient = coefficient / exponent;
         return coefficient;
+    }
+
+    public String simplifyFunc(String evaluatedFunction, String simpEvalFunc) {
+        System.out.println("ö");
+        return simpEvalFunc;
     }
 }
