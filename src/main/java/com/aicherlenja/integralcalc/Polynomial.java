@@ -1,6 +1,5 @@
 package com.aicherlenja.integralcalc;
 
-import static com.aicherlenja.integralcalc.CompositeFunction.solutionArea;
 import static java.lang.Math.pow;
 
 public class Polynomial implements FunctionComponent { //subclass
@@ -18,8 +17,9 @@ public class Polynomial implements FunctionComponent { //subclass
 
     @Override
     public void integrateComps() {
-        exponent = addOneExpo(exponent);
-        coefficient = divideWithNewExpo(coefficient, exponent);
+        CompositeFunction compFunc = new CompositeFunction(exponent, coefficient);
+        exponent = compFunc.addOneExpo(exponent);
+        coefficient = compFunc.divideWithNewExpo(coefficient, exponent);
     }
 
     @Override
@@ -28,27 +28,19 @@ public class Polynomial implements FunctionComponent { //subclass
         return evaluatedFuncPart;
     }
 
-    double calculateFuncPartX1(double solutionAreaPartX1, double uiX1) {
+    @Override
+    public double calculateFuncPartX1(double solutionAreaPartX1, double uiX1) {
         solutionAreaPartX1 = (coefficient * pow(uiX1, exponent));
         return solutionAreaPartX1;
     }
 
-    double calculateFuncPartX2(double solutionAreaPartX2, double uiX2) {
+    @Override
+    public double calculateFuncPartX2(double solutionAreaPartX2, double uiX2) {
         solutionAreaPartX2 = (coefficient * pow(uiX2, exponent));
         return solutionAreaPartX2;
     }
 
-    public double addOneExpo(double exponent) {
-        exponent++;
-        return exponent;
-    }
-
-    public double divideWithNewExpo(double coefficient, double exponent) {
-        coefficient = coefficient / exponent;
-        return coefficient;
-    }
-
-    public String simplifyFunc(String evaluatedFunction, String simpEvalFunc) {
+    public String simplifyFunc(String evaluatedFunction, String simpEvalFunc) { // interface or move in CompositeFunc?
         System.out.println("ö");
         return simpEvalFunc;
     }

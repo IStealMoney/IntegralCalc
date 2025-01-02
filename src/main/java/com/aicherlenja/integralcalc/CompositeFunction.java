@@ -16,6 +16,11 @@ public class CompositeFunction { // manages function components
         exponentPart = "";
         evaluatedFunction = "";
     }
+
+    CompositeFunction(double coefficient, double exponent) {
+        this.coefficient = coefficient;
+        this.exponent = exponent;
+    }
     public static void separateFunction() {
         solutionArea = 0;
         String[] functionSplit = GUIController.function.split("(?=[+-])");
@@ -85,6 +90,16 @@ public class CompositeFunction { // manages function components
             exponent = 1;
         }
         return exponent;
+    }
+
+    public double addOneExpo(double exponent) {
+        exponent++;
+        return exponent;
+    }
+
+    public double divideWithNewExpo(double coefficient, double exponent) {
+        coefficient = coefficient / exponent;
+        return coefficient;
     }
 
     private static double calculateSolutionArea(double solutionAreaPartX1, double solutionAreaPartX2) {
