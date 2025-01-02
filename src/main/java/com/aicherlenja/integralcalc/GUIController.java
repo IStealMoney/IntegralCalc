@@ -6,15 +6,19 @@
 package com.aicherlenja.integralcalc;
 
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+
+import java.awt.event.ActionEvent;
 
 public class GUIController {    //UI control logic
 
     public static double uiX1, uiX2;
     public static String function, selectedComboBox, errorMessage;
-    public static String[] comboBoxOptions = {"Polynomial functions", "Logarithmic/ Exponential functions", "Trigonometric functions", "Root functions", "Composite functions"};
+    public static String[] comboBoxOptions = {"Polynomial functions", "Exponential functions", "Logarithmic functions", "Trigonometric functions", "Root functions", "Composite functions"};
 
     @FXML
     private TextArea textArea = new TextArea();
@@ -28,8 +32,32 @@ public class GUIController {    //UI control logic
     @FXML
     private void initialize() {
         comboBox.setItems(FXCollections.observableArrayList(comboBoxOptions));
+        comboBox.valueProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                switch (t1) {
+                    case "Polynomial functions":
+                        functionField.setText("e.g. 3x^2");
+                        break;
+                    case "Exponential functions":
+                        functionField.setText("e.g. 3*2^x");
+                        break;
+                    case "Logarithmic functions":
+                        functionField.setText("e.g. log_10(x)");
+                        break;
+                    case "Trigonometric functions":
+                        functionField.setText("e.g. sin(x)");
+                        break;
+                    case "Root functions":
+                        functionField.setText("e.g. 1/x");
+                        break;
+                    case "Composite functions":
+                        functionField.setText("e.g. 3x^2 + 3*2^x");
+                        break;
+                }
+            }
+        });
     }
-
 
     @FXML
     public void handleSubmitBtn() {
@@ -59,6 +87,6 @@ public class GUIController {    //UI control logic
     public void showSolution(double solutionArea, String evaluatedFunction) {
         System.out.println(evaluatedFunction);
         System.out.println(solutionArea);
-        Platform.runLater(() -> textArea.setText("Area: " + (Double.toString(solutionArea)) + "\n Integrated function: " + evaluatedFunction));
+        Platform.runLater(() -> textArea.setText("Area: " + (Double.toString(solutionArea)) + "\nAntiderivative: " + evaluatedFunction));
     }
 }

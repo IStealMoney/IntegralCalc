@@ -43,7 +43,10 @@ public class CompositeFunction { // manages function components
                     evaluatedFunction = (evaluatedFunction + " " + poly.evaluateFunction());  //integrated function
                     simpEvalFunc = poly.simplifyFunc(evaluatedFunction, simpEvalFunc); //simplify
                     break;
-                case "Logarithmic/ Exponential functions":
+                case "Exponential functions":
+
+                    break;
+                case "Logarithmic functions":
 
                     break;
                 case "Trigonometric functions":
