@@ -35,7 +35,7 @@ public class CompositeFunction { // manages function components
 
             // calculate integral for specific function type
             switch (GUIController.selectedComboBox) {
-                case "Polynomial":
+                case "Polynomial functions":
                     Polynomial poly = new Polynomial(coefficient, exponent);
                     poly.integrateComps();
                     solutionAreaPartX1 += poly.calculateFuncPartX1(solutionAreaPartX1, uiX1); // area
@@ -43,16 +43,16 @@ public class CompositeFunction { // manages function components
                     evaluatedFunction = (evaluatedFunction + " " + poly.evaluateFunction());  //integrated function
                     simpEvalFunc = poly.simplifyFunc(evaluatedFunction, simpEvalFunc); //simplify
                     break;
-                case "Logarithmische/ Exponential":
+                case "Logarithmic/ Exponential functions":
 
                     break;
-                case "Trigonometrische":
+                case "Trigonometric functions":
 
                     break;
-                case "1/x":
+                case "Root functions":
 
                     break;
-                case "Zusammengesetzte":
+                case "Composite functions":
 
                     break;
             }
