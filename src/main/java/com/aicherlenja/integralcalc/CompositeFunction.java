@@ -62,13 +62,17 @@ public class CompositeFunction { // manages function components
     }
 
     private static double findCoefficient(String s) {
-        if (s.charAt(0) == 'x' ||
-                (s.charAt(0) == '+' && s.charAt(1) == 'x')) {
-            coefficient = 1;
-        } else if (s.charAt(0) == '-' && s.charAt(1) == 'x') {
-            coefficient = -1;
-        } else {
-            coefficient = Double.parseDouble(s.substring(0, s.indexOf("x")));
+        if (!s.contains("x")) {
+            coefficient = Double.parseDouble(s);
+        } else if (s.contains("x")) {
+            if (s.charAt(0) == 'x' ||
+                    (s.charAt(0) == '+' && s.charAt(1) == 'x')) {
+                coefficient = 1;
+            } else if (s.charAt(0) == '-' && s.charAt(1) == 'x') {
+                coefficient = -1;
+            } else {
+                coefficient = Double.parseDouble(s.substring(0, s.indexOf("x")));
+            }
         }
         return coefficient;
     }
@@ -86,8 +90,8 @@ public class CompositeFunction { // manages function components
             } else {
                 exponent = 1;
             }
-        } else {
-            exponent = 1;
+        } else if (!s.contains("x")) {
+            exponent = 0;   //will call addOneExpo() soon
         }
         return exponent;
     }
