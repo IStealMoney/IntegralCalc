@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="600.0" prefWidth="800.0" stylesheets="@GUI.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aicherlenja.integralcalc.GUIController">
+<VBox prefHeight="600.0" prefWidth="800.0" stylesheets="@GUI.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.aicherlenja.integralcalc.GUIController">
    <children>
-      <SplitPane dividerPositions="0.30200501253132833" prefHeight="600.0" prefWidth="800.0">
+      <SplitPane prefHeight="600.0" prefWidth="800.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="598.0" prefWidth="230.0">
                <children>
@@ -20,7 +26,6 @@
                   <Label fx:id="labelfx" layoutX="20.0" layoutY="104.0" text="f(x)=" />
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="386.0" />
         </items>
       </SplitPane>
    </children>

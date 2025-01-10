@@ -1,31 +1,24 @@
 package com.aicherlenja.integralcalc;
 
-
+import javafx.application.Application;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
+import javafx.stage.Stage;
 
 public class GUICS {    //coordinate system
 
-    public void drawCs() {
-        Canvas canvas = new Canvas(600, 400);
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        drawAxes(gc);
-    }
+    public Node createCoordinateSystem() {
+        Pane root = new Pane();
 
-    public void drawAxes(GraphicsContext gc) {
-        gc.strokeLine(300, 0, 300, 400);    // y
-        gc.strokeLine(0, 200, 600, 200);    // x
-    }
-
-    public void drawLinear(GraphicsContext gc) {
-
-    }
-
-    public void drawQuad(GraphicsContext gc) {
-
-    }
-
-    public void drawSinus(GraphicsContext gc) {
-
+        //cs
+        Line xAxis = new Line(0, 300, 800, 300);
+        Line yAxis = new Line(275, 0, 275, 800);
+        root.getChildren().addAll(xAxis, yAxis);
+        return root;
     }
 }

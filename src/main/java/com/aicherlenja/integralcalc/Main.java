@@ -2,8 +2,10 @@ package com.aicherlenja.integralcalc;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.SplitPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import java.io.IOException;
@@ -16,15 +18,20 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GUI.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
+        Parent guiRoot = loader.load();
 
-        //GUICS cs = new GUICS(); // coordinate system
-        //cs.drawCs();
-        stage.initStyle(StageStyle.DECORATED);
-        stage.setTitle("IntegralCalc");
+        GUICS cs = new GUICS(); // coordinate system
+        Node coordSystemNode = cs.createCoordinateSystem();
+
+        SplitPane splitPane = new SplitPane();
+        splitPane.getItems().addAll(guiRoot, coordSystemNode);
+        splitPane.setDividerPositions(0.3);
+
+        Scene scene = new Scene(splitPane, 800, 600);
         stage.setScene(scene);
-        //stage.setFullScreen(true);
+        stage.setTitle("IntegralCalc");
+        stage.setResizable(false);
+        stage.setAlwaysOnTop(true);
         stage.show();
 
         //stage event listener
@@ -34,7 +41,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 
     public static GUIController getController() {
