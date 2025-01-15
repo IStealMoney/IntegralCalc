@@ -7,16 +7,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import java.io.IOException;
 
 public class Main extends Application {
 
     private static GUIController controller;
+    private Stage stage;
 
     @Override
     public void start(Stage stage) throws IOException {
-
+        this.stage = stage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GUI.fxml"));
         Parent guiRoot = loader.load();
 
@@ -49,5 +49,12 @@ public class Main extends Application {
             controller = new GUIController();
         }
         return controller;
+    }
+
+    public void changeScene(String fxml) throws IOException {
+        Parent pane = FXMLLoader.load(
+                getClass().getResource(fxml));
+
+        stage.getScene().setRoot(pane);
     }
 }
