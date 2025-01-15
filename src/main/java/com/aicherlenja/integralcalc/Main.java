@@ -61,7 +61,7 @@ public class Main extends Application {
             return;
         }
 
-        //stage.setResizable(false);
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
