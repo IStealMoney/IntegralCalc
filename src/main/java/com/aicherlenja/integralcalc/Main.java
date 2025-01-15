@@ -35,11 +35,10 @@ public class Main extends Application {
         Parent guiRoot = loader.load();
         try {
             if (fxml.equals("GUI.fxml")) {
-                GUICS cs = new GUICS(); // coordinate system
-                Node coordSystemNode = cs.createCoordinateSystem();
-
+                CartCoordSys cCS = new CartCoordSys();
+                cCS.drawCoordSys();
                 SplitPane splitPane = new SplitPane();
-                splitPane.getItems().addAll(guiRoot, coordSystemNode);
+                splitPane.getItems().addAll(guiRoot, CartCoordSys.cViewer);
                 splitPane.setDividerPositions(0.3);
 
                 scene = new Scene(splitPane, 800, 600);
