@@ -41,7 +41,6 @@ public class Polynomial implements FunctionComponent { //subclass
     }
 
     public String simplifyFunc(String evaluatedFunction, String simpEvalFunc) { // interface or move in CompositeFunc?
-        System.out.println("ö");
         return simpEvalFunc;
     }
 }

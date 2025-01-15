@@ -24,8 +24,9 @@
          <content>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <ComboBox layoutX="38.0" layoutY="68.0" prefHeight="26.0" prefWidth="100.0" />
+                  <ComboBox fx:id="themeComboBox" layoutX="38.0" layoutY="68.0" prefHeight="26.0" prefWidth="134.0" />
                   <Label layoutX="38.0" layoutY="34.0" text="Themes:" />
+                  <Button fx:id="applyButton" layoutX="526.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleAppearanceApplyButton" text="Apply" />
                </children>
             </Pane>
          </content>

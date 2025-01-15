@@ -61,7 +61,6 @@ public class CompositeFunction { // manages function components
             }
         }
         solutionArea = calculateSolutionArea(solutionAreaPartX1, solutionAreaPartX2);
-        Main.getController().showSolution(solutionArea, evaluatedFunction);
     }
 
     private static double findCoefficient(String s) {

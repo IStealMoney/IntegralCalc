@@ -58,7 +58,7 @@ public class Main extends Application {
         stage.show();
     }
 
-    public static GUIController getController() {
+    public static GUIController getController() {   // currently not in use
         if (controller == null) {
             controller = new GUIController();
         }
