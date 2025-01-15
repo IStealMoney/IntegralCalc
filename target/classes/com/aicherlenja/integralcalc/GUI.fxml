@@ -5,22 +5,22 @@
 
 <VBox prefHeight="600.0" prefWidth="800.0" stylesheets="@GUI.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aicherlenja.integralcalc.GUIController">
    <children>
-      <SplitPane dividerPositions="0.30200501253132833" prefHeight="600.0" prefWidth="800.0">
+      <SplitPane prefHeight="600.0" prefWidth="800.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="598.0" prefWidth="230.0">
                <children>
                   <ComboBox fx:id="comboBox" layoutX="19.0" layoutY="45.0" prefHeight="24.0" prefWidth="200.0" />
                   <TextField fx:id="functionField" layoutX="50.0" layoutY="100.0" prefHeight="26.0" prefWidth="169.0" />
-                  <TextField fx:id="textFieldX1" layoutX="50.0" layoutY="150.0" prefHeight="26.0" prefWidth="169.0" />
+                  <TextField fx:id="textFieldX1" layoutX="50.0" layoutY="150.0" prefHeight="26.0" prefWidth="70.0" />
                   <Label fx:id="labelX1" layoutX="20.0" layoutY="150.0" text="x1:" />
-                  <TextField fx:id="textFieldX2" layoutX="50.0" layoutY="200.0" prefHeight="26.0" prefWidth="169.0" />
+                  <TextField fx:id="textFieldX2" layoutX="50.0" layoutY="200.0" prefHeight="26.0" prefWidth="70.0" />
                   <Label fx:id="labelX2" layoutX="20.0" layoutY="200.0" text="x2:" />
                   <Button fx:id="buttonSubmit" layoutX="50.0" layoutY="250.0" mnemonicParsing="false" onAction="#handleSubmitBtn" prefHeight="26.0" prefWidth="169.0" text="Submit" textAlignment="CENTER" />
                   <TextArea fx:id="textArea" layoutX="19.0" layoutY="300.0" prefHeight="280.0" prefWidth="200.0" />
                   <Label fx:id="labelfx" layoutX="20.0" layoutY="104.0" text="f(x)=" />
+                  <Button fx:id="helpButton" layoutX="142.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleHelpButton" prefHeight="75.0" prefWidth="60.0" text="HELP" textAlignment="CENTER" />
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="386.0" />
         </items>
       </SplitPane>
    </children>

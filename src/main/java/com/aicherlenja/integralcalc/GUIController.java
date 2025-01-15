@@ -84,6 +84,12 @@ public class GUIController {    //UI control logic
         }
     }
 
+    @FXML
+    public void handleHelpButton() {
+        // switch scene
+        System.out.println("User needs help!");
+    }
+
     public void showSolution(double solutionArea, String evaluatedFunction) {
         System.out.println(evaluatedFunction);
         System.out.println(solutionArea);
