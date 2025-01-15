@@ -89,8 +89,7 @@ public class GUIController {    //UI control logic
     @FXML
     public void handleHelpButton() throws IOException {
         Main main = new Main();
-        main.changeScene("HelpPage.fxml");
-        // switch scene
+        main.changeScene("HelpPage.fxml");  // switch scene
         System.out.println("User needs help!");
     }
 
