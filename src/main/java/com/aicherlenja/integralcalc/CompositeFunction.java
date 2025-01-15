@@ -63,7 +63,7 @@ public class CompositeFunction { // manages function components
         solutionArea = calculateSolutionArea(solutionAreaPartX1, solutionAreaPartX2);
     }
 
-    private static double findCoefficient(String s) {
+    private static double findCoefficient(String s) {   //move to specific class?
         if (!s.contains("x")) {
             coefficient = Double.parseDouble(s);
         } else if (s.contains("x")) {
