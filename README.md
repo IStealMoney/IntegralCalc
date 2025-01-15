@@ -8,4 +8,5 @@ IntegralCalc is a JavaFX application that calculates integrals of different func
 - [ ] Root functions
 - [ ] Composite functions
 - [ ] Cartesian coordinate system
+- [ ] help page
 
