@@ -6,11 +6,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.util.Objects;
 
 public class Main extends Application {
 
@@ -21,8 +18,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         stage = primaryStage;
-        System.out.println("Primary Stage: " + primaryStage);
-        changeScene("GUI.fxml");
+        switchScene("GUI.fxml");
 
         //stage event listener
         stage.setOnCloseRequest(event -> {
@@ -34,12 +30,9 @@ public class Main extends Application {
         launch(args);
     }
 
-    public void changeScene(String fxml) throws IOException {
+    public void switchScene(String fxml) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         Parent guiRoot = loader.load();
-        if (stage == null) {
-            System.out.println("Stage is not initialized!");
-        }
         try {
             if (fxml.equals("GUI.fxml")) {
                 GUICS cs = new GUICS(); // coordinate system
@@ -60,7 +53,6 @@ public class Main extends Application {
             System.out.println("Error loading FXML file: " + fxml);
             return;
         }
-
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();

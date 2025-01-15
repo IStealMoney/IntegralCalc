@@ -10,10 +10,8 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 
 public class GUIController {    //UI control logic
@@ -89,8 +87,7 @@ public class GUIController {    //UI control logic
     @FXML
     public void handleHelpButton() throws IOException {
         Main main = new Main();
-        main.changeScene("HelpPage.fxml");  // switch scene
-        System.out.println("User needs help!");
+        main.switchScene("HelpPage.fxml");  // switch scene
     }
 
     public void showSolution(double solutionArea, String evaluatedFunction) {
