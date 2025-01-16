@@ -11,7 +11,12 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.io.IOException;
 
 public class GUIController {    //UI control logic
@@ -64,6 +69,13 @@ public class GUIController {    //UI control logic
     public void handleSettingsButton() throws IOException {
         Main main = new Main();
         main.switchScene("SettingsMenu.fxml");
+    }
+
+    @FXML
+    public void handleCopyButton() {
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        StringSelection selection = new StringSelection(textArea.getText());
+        clipboard.setContents(selection, null);
     }
 
     public void showSolution(double solutionArea, String evaluatedFunction) {

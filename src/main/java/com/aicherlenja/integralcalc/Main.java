@@ -20,7 +20,7 @@ public class Main extends Application {
         stage = primaryStage;
         switchScene("GUI.fxml");
 
-        //stage event listener
+        // stage event listener
         stage.setOnCloseRequest(event -> {
             System.out.println("Closing");
         });
