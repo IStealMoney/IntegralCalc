@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aicherlenja.integralcalc.SettingsMenuController">
+  <tabs>
+    <Tab text="Home">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="goBackButton" layoutX="14.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleGoBack" text="go back" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab text="Appearance">
+         <content>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ComboBox fx:id="themeComboBox" layoutX="38.0" layoutY="68.0" prefHeight="26.0" prefWidth="134.0" />
+                  <Label layoutX="38.0" layoutY="34.0" text="Themes:" />
+                  <Button fx:id="applyButton" layoutX="526.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleAppearanceApplyButton" text="Apply" />
+               </children>
+            </Pane>
+         </content>
+    </Tab>
+      <Tab text="Function overview">
+         <content>
+            <ScrollPane prefHeight="200.0" prefWidth="200.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="373.0" prefWidth="598.0">
+                     <children>
+                        <TextArea prefHeight="228.0" prefWidth="325.0" text="function overview " />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+         </content>
+      </Tab>
+  </tabs>
+</TabPane>

@@ -1,14 +1,18 @@
 package com.aicherlenja.integralcalc;
 
 public class Trigonometric implements FunctionComponent {
-    CompositeFunction compFunc = new CompositeFunction();
-    public static void main(String[] args) {
 
+    private double coefficient;
+    private double exponent;
+
+    public Trigonometric(double coefficient, double exponent) {
+        this.coefficient = coefficient;
+        this.exponent = exponent;
     }
 
     @Override
     public void integrateComps() {
-
+        CompositeFunction compFunc = new CompositeFunction();
     }
 
     @Override
@@ -24,5 +28,13 @@ public class Trigonometric implements FunctionComponent {
     @Override
     public double calculateFuncPartX2(double solutionAreaPartX2, double uiX2) {
         return 0;
+    }
+
+    public static boolean isTrigo(String s) {
+        if (s.contains("sin") || s.contains("cos")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

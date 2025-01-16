@@ -34,30 +34,21 @@ public class CompositeFunction { // manages function components
             exponent = findExponent(s);
 
             // calculate integral for specific function type
-            switch (GUIController.selectedComboBox) {
-                case "Polynomial functions":
-                    Polynomial poly = new Polynomial(coefficient, exponent);
-                    poly.integrateComps();
-                    solutionAreaPartX1 += poly.calculateFuncPartX1(solutionAreaPartX1, uiX1); // area
-                    solutionAreaPartX2 += poly.calculateFuncPartX2(solutionAreaPartX2, uiX2);
-                    evaluatedFunction = (evaluatedFunction + " " + poly.evaluateFunction());  //integrated function
-                    simpEvalFunc = poly.simplifyFunc(evaluatedFunction, simpEvalFunc); //simplify
-                    break;
-                case "Exponential functions":
+            if (s.contains("x^")) {
+                Polynomial poly = new Polynomial(coefficient, exponent);
+                poly.integrateComps();
+                solutionAreaPartX1 += poly.calculateFuncPartX1(solutionAreaPartX1, uiX1); // area
+                solutionAreaPartX2 += poly.calculateFuncPartX2(solutionAreaPartX2, uiX2);
+                evaluatedFunction = (evaluatedFunction + " " + poly.evaluateFunction());  //integrated function
+                simpEvalFunc = poly.simplifyFunc(evaluatedFunction, simpEvalFunc); //simplify
+            } else if (s.contains("^x")) {
+                Exponential exponential = new Exponential();
+            } else if (Trigonometric.isTrigo(s) == true) {
+                Trigonometric trigo = new Trigonometric(coefficient, exponent);
+                System.out.println("contains sin or cos");
+            } else if (s.contains("sqrt")) {
+                Root root = new Root();
 
-                    break;
-                case "Logarithmic functions":
-
-                    break;
-                case "Trigonometric functions":
-
-                    break;
-                case "Root functions":
-
-                    break;
-                case "Composite functions":
-
-                    break;
             }
         }
         solutionArea = calculateSolutionArea(solutionAreaPartX1, solutionAreaPartX2);
@@ -66,7 +57,7 @@ public class CompositeFunction { // manages function components
     private static double findCoefficient(String s) {   //move to specific class?
         if (!s.contains("x")) {
             coefficient = Double.parseDouble(s);
-        } else if (s.contains("x")) {
+        } else if (s.contains("x") && Trigonometric.isTrigo(s) == false) {
             if (s.charAt(0) == 'x' ||
                     (s.charAt(0) == '+' && s.charAt(1) == 'x')) {
                 coefficient = 1;
@@ -74,6 +65,16 @@ public class CompositeFunction { // manages function components
                 coefficient = -1;
             } else {
                 coefficient = Double.parseDouble(s.substring(0, s.indexOf("x")));
+            }
+        } else if (Trigonometric.isTrigo(s) == true) {
+            if (s.charAt(0) == 's' || s.charAt(1) == 'c') { // s for sin and c for cos
+                coefficient = 1;
+            } else {
+                if (s.contains("sin")) {
+                    coefficient = Double.parseDouble(s.substring(0, s.indexOf("s")));
+                } else if (s.contains("cos")) {
+                    coefficient = Double.parseDouble(s.substring(0, s.indexOf("c")));
+                }
             }
         }
         return coefficient;

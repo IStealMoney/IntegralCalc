@@ -17,8 +17,7 @@ import java.io.IOException;
 public class GUIController {    //UI control logic
 
     public static double uiX1, uiX2;
-    public static String function, selectedComboBox, errorMessage;
-    public static String[] comboBoxOptions = {"Polynomial functions", "Exponential functions", "Logarithmic functions", "Trigonometric functions", "Root functions", "Composite functions"};
+    public static String function, errorMessage;
 
     @FXML
     private TextArea textArea = new TextArea();
@@ -27,36 +26,8 @@ public class GUIController {    //UI control logic
     private TextField textFieldX1, textFieldX2, functionField;
 
     @FXML
-    ComboBox comboBox = new ComboBox();
-
-    @FXML
     private void initialize() {
-        comboBox.setItems(FXCollections.observableArrayList(comboBoxOptions));
-        comboBox.valueProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                switch (t1) {
-                    case "Polynomial functions":
-                        functionField.setText("e.g. 3x^2");
-                        break;
-                    case "Exponential functions":
-                        functionField.setText("e.g. 3*2^x");
-                        break;
-                    case "Logarithmic functions":
-                        functionField.setText("e.g. log_10(x)");
-                        break;
-                    case "Trigonometric functions":
-                        functionField.setText("e.g. sin(x)");
-                        break;
-                    case "Root functions":
-                        functionField.setText("e.g. 1/x");
-                        break;
-                    case "Composite functions":
-                        functionField.setText("e.g. 3x^2 + 3*2^x");
-                        break;
-                }
-            }
-        });
+
     }
 
     @FXML
@@ -66,7 +37,6 @@ public class GUIController {    //UI control logic
         //user input
         try {
             function = functionField.getText();
-            selectedComboBox = (String) comboBox.getValue();
             uiX1 = Double.parseDouble(textFieldX1.getText());
             uiX2 = Double.parseDouble(textFieldX2.getText());
         } catch(NumberFormatException e) {
@@ -87,7 +57,13 @@ public class GUIController {    //UI control logic
     @FXML
     public void handleHelpButton() throws IOException {
         Main main = new Main();
-        main.switchScene("HelpPage.fxml");  // switch scene
+        main.switchScene("HelpPage.fxml");
+    }
+
+    @FXML
+    public void handleSettingsButton() throws IOException {
+        Main main = new Main();
+        main.switchScene("SettingsMenu.fxml");
     }
 
     public void showSolution(double solutionArea, String evaluatedFunction) {

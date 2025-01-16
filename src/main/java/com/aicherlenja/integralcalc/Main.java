@@ -43,6 +43,8 @@ public class Main extends Application {
 
                 scene = new Scene(splitPane, 800, 600);
                 stage.setTitle("IntegralCalc");
+            } else if (fxml.equals("SettingsMenu.fxml")) {
+                scene = new Scene(guiRoot, 800, 600);
             } else if (fxml.equals("HelpPage.fxml")) {
                 scene = new Scene(guiRoot, 800, 600);
             }
