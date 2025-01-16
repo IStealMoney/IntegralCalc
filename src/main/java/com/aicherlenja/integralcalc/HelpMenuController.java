@@ -11,4 +11,10 @@ import java.io.IOException;
 public class HelpMenuController {
 
 
+
+    @FXML
+    private void handleGoBack() throws IOException {
+        Main main = new Main();
+        main.switchScene("GUI.fxml");
+    }
 }
