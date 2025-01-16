@@ -1,9 +1,9 @@
 package com.aicherlenja.integralcalc;
 
 interface FunctionComponent {    // interface between function types
-    void integrateComps();
+    void integrateComp();
 
-    String evaluateFunction();
+    String getEvaluatedFunction();
 
     double calculateFuncPartX1(double solutionAreaPartX1, double uiX1);
 

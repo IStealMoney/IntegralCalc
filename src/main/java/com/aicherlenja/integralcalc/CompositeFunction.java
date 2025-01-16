@@ -34,19 +34,22 @@ public class CompositeFunction { // manages function components
             exponent = findExponent(s);
 
             // calculate integral for specific function type
-            if (s.contains("x^")) {
+            if (s.contains("x^")) { // polynomial
                 Polynomial poly = new Polynomial(coefficient, exponent);
-                poly.integrateComps();
+                poly.integrateComp();
                 solutionAreaPartX1 += poly.calculateFuncPartX1(solutionAreaPartX1, uiX1); // area
                 solutionAreaPartX2 += poly.calculateFuncPartX2(solutionAreaPartX2, uiX2);
-                evaluatedFunction = (evaluatedFunction + " " + poly.evaluateFunction());  //integrated function
-                simpEvalFunc = poly.simplifyFunc(evaluatedFunction, simpEvalFunc); //simplify
-            } else if (s.contains("^x")) {
+                evaluatedFunction = (evaluatedFunction + " " + poly.getEvaluatedFunction());  // integrated function
+                simpEvalFunc = poly.simplifyFunc(evaluatedFunction, simpEvalFunc); // simplify
+            } else if (s.contains("^x")) {  // exponential
                 Exponential exponential = new Exponential();
-            } else if (Trigonometric.isTrigo(s) == true) {
-                Trigonometric trigo = new Trigonometric(coefficient, exponent);
-                System.out.println("contains sin or cos");
-            } else if (s.contains("sqrt")) {
+            } else if (Trigonometric.isTrigo(s) == true) {  // trigonometric
+                Trigonometric trigo = new Trigonometric(coefficient, exponent, s);
+                trigo.integrateComp();
+                solutionAreaPartX1 += trigo.calculateFuncPartX1(solutionAreaPartX1, uiX1);
+                solutionAreaPartX2 += trigo.calculateFuncPartX2(solutionAreaPartX2, uiX2);
+                evaluatedFunction = (evaluatedFunction + " " + trigo.getEvaluatedFunction());
+            } else if (s.contains("sqrt")) {    // root
                 Root root = new Root();
 
             }

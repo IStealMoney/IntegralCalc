@@ -8,7 +8,7 @@ public class Polynomial implements FunctionComponent { //subclass
 
     private double coefficient;
     private double exponent;
-    public static String evaluatedFuncPart, evaluatedFuncSX1, evaluatedFuncSX2;
+    private static String evaluatedFuncPart;
 
     public Polynomial(double coefficient, double exponent) {
         this.coefficient = coefficient;
@@ -16,14 +16,14 @@ public class Polynomial implements FunctionComponent { //subclass
     }
 
     @Override
-    public void integrateComps() {
+    public void integrateComp() {
         CompositeFunction compFunc = new CompositeFunction(exponent, coefficient);
         exponent = compFunc.addOneExpo(exponent);
         coefficient = compFunc.divideWithNewExpo(coefficient, exponent);
     }
 
     @Override
-    public String evaluateFunction() {
+    public String getEvaluatedFunction() {
         evaluatedFuncPart = coefficient + "x^" + exponent;
         return evaluatedFuncPart;
     }
