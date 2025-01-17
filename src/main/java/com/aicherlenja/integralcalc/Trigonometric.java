@@ -19,9 +19,9 @@ public class Trigonometric implements FunctionComponent {
         CompositeFunction compFunc = new CompositeFunction(exponent, coefficient);
         if (isSin(s)) {
             System.out.println("is sin");
-            s.replace("sin", "cos");
+            s = s.replace("sin", "cos");
         } else if (!isSin(s)) {
-            s.replace("cos", "sin");
+            s = s.replace("cos", "sin");
         }
     }
 

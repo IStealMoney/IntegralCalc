@@ -13,10 +13,6 @@ public class CartCoordSys {
 
     public static ChartViewer cViewer = new ChartViewer();
 
-    public static void main(String[] args) {
-
-    }
-
     public void drawCoordSys() {
         XYSeries series = new XYSeries("Dataset");
         series.add(1.0, 2.0);

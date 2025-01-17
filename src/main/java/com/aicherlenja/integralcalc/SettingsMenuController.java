@@ -15,10 +15,6 @@ public class SettingsMenuController {
     @FXML
     ComboBox themeComboBox = new ComboBox();
 
-    public static void main(String[] args) {
-
-    }
-
     @FXML
     private void initialize() {
         themeComboBox.setItems(FXCollections.observableArrayList(comboBoxOptions));
