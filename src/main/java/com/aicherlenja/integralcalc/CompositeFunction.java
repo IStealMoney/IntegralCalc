@@ -70,14 +70,10 @@ public class CompositeFunction { // manages function components
                 coefficient = Double.parseDouble(s.substring(0, s.indexOf("x")));
             }
         } else if (Trigonometric.isTrigo(s) == true) {
-            if (s.charAt(0) == 's' || s.charAt(1) == 'c') { // s for sin and c for cos
-                coefficient = 1;
-            } else {
-                if (s.contains("sin")) {
-                    coefficient = Double.parseDouble(s.substring(0, s.indexOf("s")));
-                } else if (s.contains("cos")) {
-                    coefficient = Double.parseDouble(s.substring(0, s.indexOf("c")));
-                }
+            if (s.contains("sin")) { // s for sin and c for cos
+                coefficient = Double.parseDouble(s.substring(0, s.indexOf("s")));
+            } else if (s.contains("cos")) {
+                coefficient = Double.parseDouble(s.substring(0, s.indexOf("c")));
             }
         }
         return coefficient;
@@ -114,5 +110,15 @@ public class CompositeFunction { // manages function components
 
     private static double calculateSolutionArea(double solutionAreaPartX1, double solutionAreaPartX2) {
         return solutionAreaPartX2 - solutionAreaPartX1;
+    }
+
+    public static char getPreSign(String s) {
+        char preSign;
+        if (s.substring(0, 1).equals("-")) {
+            preSign = '-';
+        } else {
+            preSign = '+';
+        }
+        return preSign;
     }
 }

@@ -1,5 +1,7 @@
 package com.aicherlenja.integralcalc;
 
+import static com.aicherlenja.integralcalc.CompositeFunction.getPreSign;
+
 public class Trigonometric implements FunctionComponent {
 
     private double coefficient;
@@ -17,10 +19,18 @@ public class Trigonometric implements FunctionComponent {
     @Override
     public void integrateComp() {
         CompositeFunction compFunc = new CompositeFunction(exponent, coefficient);
-        if (isSin(s)) {
-            System.out.println("is sin");
-            s = s.replace("sin", "cos");
-        } else if (!isSin(s)) {
+        if (isSin(s) && getPreSign(s) == '+') { // if +sin(x) -> -cos(x)
+            System.out.println("is +sin");
+            s = s.replace("sin", "-cos");
+        } else if (isSin(s) && getPreSign(s) == '-') {  // if -sin(x) -> cos(x)
+            System.out.println("is -sin");
+            s = s.replace("-", "");
+            s = s.replace("cos", "");
+        } else if (!isSin(s) && getPreSign(s) == '+') {  // if +cos(x) -> +sin(x)
+            System.out.println("is +cos");
+            s = s.replace("cos", "sin");
+        } else if (!isSin(s) && getPreSign(s) == '-') {  // if -cos(x) -> -sin(x)
+            System.out.println("is -cos");
             s = s.replace("cos", "sin");
         }
     }
