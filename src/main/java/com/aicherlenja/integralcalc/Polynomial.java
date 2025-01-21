@@ -6,13 +6,45 @@ public class Polynomial implements FunctionComponent { //subclass
 
     // f(x) = a_n * x^n + a_n-1 * x^n-1 ...
 
-    private double coefficient;
-    private double exponent;
-    private static String evaluatedFuncPart;
+    private double coefficient, exponent;
+    private String evaluatedFuncPart, s, exponentPart;
 
-    public Polynomial(double coefficient, double exponent) {
+    public Polynomial(double coefficient, double exponent, String s) {
         this.coefficient = coefficient;
         this.exponent = exponent;
+        this.s = s;
+    }
+
+    @Override
+    public double getCoefficient(String s) {
+        if (s.charAt(0) == 'x' || (s.charAt(0) == '+' && s.charAt(1) == 'x')) {
+            coefficient = 1;
+        } else if (s.charAt(0) == '-' && s.charAt(1) == 'x') {
+            coefficient = -1;
+        } else {
+            coefficient = Double.parseDouble(s.substring(0, s.indexOf("x")));
+        }
+        return coefficient;
+    }
+
+    @Override
+    public double getExponent(String s) {
+        if (s.contains("x")) {
+            if (s.contains("^")) {
+                exponentPart = s.substring(s.indexOf("^")+1, s.length()); // whole exponent (e.g. 2x)
+                //if (exponentPart.matches("[-+]?\\d*\\.?\\d+")) {
+                //exponent = Float.parseFloat(exponentPart);
+                //} else {
+                //throw new NumberFormatException("Invalid exponent format: " + exponentPart);
+                //}
+                exponent = Double.parseDouble(exponentPart);
+            } else {
+                exponent = 1;
+            }
+        } else if (!s.contains("x")) {
+            exponent = 0;   //will call addOneExpo() soon
+        }
+        return exponent;
     }
 
     @Override

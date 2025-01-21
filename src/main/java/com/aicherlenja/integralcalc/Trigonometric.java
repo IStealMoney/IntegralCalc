@@ -4,8 +4,7 @@ import static com.aicherlenja.integralcalc.CompositeFunction.getPreSign;
 
 public class Trigonometric implements FunctionComponent {
 
-    private double coefficient;
-    private double exponent;
+    private double coefficient, exponent;
     private String s;
     private static String evaluatedFuncPart;
     private boolean isSin;
@@ -14,6 +13,16 @@ public class Trigonometric implements FunctionComponent {
         this.coefficient = coefficient;
         this.exponent = exponent;
         this.s = s;
+    }
+
+    @Override
+    public double getCoefficient(String s) {
+        return coefficient;
+    }
+
+    @Override
+    public double getExponent(String s) {
+        return exponent;
     }
 
     @Override
@@ -73,7 +82,7 @@ public class Trigonometric implements FunctionComponent {
     public boolean isSin(String s) {
         if (s.contains("sin")) {
             isSin = true;
-        }  else if (s.contains("cos")) {
+        } else if (s.contains("cos")) {
             isSin = false;
         }
         return isSin;
