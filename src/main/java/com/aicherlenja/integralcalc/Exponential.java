@@ -34,4 +34,9 @@ public class Exponential implements FunctionComponent {
     public double calculateFuncPartX2(double solutionAreaPartX2, double uiX2) {
         return 0;
     }
+
+    @Override
+    public double calculateArea(double solutionAreaPartX1, double solutionAreaPartX2) {
+        return 0;
+    }
 }

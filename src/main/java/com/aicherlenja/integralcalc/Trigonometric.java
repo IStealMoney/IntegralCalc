@@ -1,7 +1,6 @@
 package com.aicherlenja.integralcalc;
 
 import static com.aicherlenja.integralcalc.CompositeFunction.evaluatedFunction;
-import static com.aicherlenja.integralcalc.CompositeFunction.getPreSign;
 
 public class Trigonometric implements FunctionComponent {
 
@@ -91,6 +90,11 @@ public class Trigonometric implements FunctionComponent {
             solutionAreaPartX2 = Math.cos(uiX2);
         }
         return solutionAreaPartX2;
+    }
+
+    @Override
+    public double calculateArea(double solutionAreaPartX1, double solutionAreaPartX2) {
+        return coefficient * (solutionAreaPartX2 - solutionAreaPartX1);
     }
 
     public static boolean isTrigo(String s) {

@@ -39,10 +39,12 @@ public class CompositeFunction { // manages function components
                 solutionAreaPartX1 += poly.calculateFuncPartX1(solutionAreaPartX1, uiX1); // area
                 solutionAreaPartX2 += poly.calculateFuncPartX2(solutionAreaPartX2, uiX2);
                 evaluatedFunction = (evaluatedFunction + " " + poly.getEvaluatedFunction());  // integrated function
+                solutionArea = poly.calculateArea(solutionAreaPartX1, solutionAreaPartX2);
                 simpEvalFunc = poly.simplifyFunc(evaluatedFunction, simpEvalFunc); // simplify
             } else if (s.contains("^x")) {  // exponential
                 Exponential exponential = new Exponential(coefficient, s);
                 coefficient = exponential.getCoefficient(s);
+                solutionArea = calculateSolutionArea(solutionAreaPartX1, solutionAreaPartX2);
             } else if (Trigonometric.isTrigo(s)) {  // trigonometric
                 Trigonometric trigo = new Trigonometric(coefficient, s);
                 coefficient = trigo.getCoefficient(s);
@@ -50,13 +52,14 @@ public class CompositeFunction { // manages function components
                 solutionAreaPartX1 += trigo.calculateFuncPartX1(solutionAreaPartX1, uiX1);
                 solutionAreaPartX2 += trigo.calculateFuncPartX2(solutionAreaPartX2, uiX2);
                 evaluatedFunction = (evaluatedFunction + " " + trigo.getEvaluatedFunction());
+                solutionArea = trigo.calculateArea(solutionAreaPartX1, solutionAreaPartX2);
             } else if (s.contains("sqrt")) {    // root
                 Root root = new Root(coefficient, s);
                 coefficient = root.getCoefficient(s);
                 root.integrateComp();
+                solutionArea = calculateSolutionArea(solutionAreaPartX1, solutionAreaPartX2);
             }
         }
-        solutionArea = calculateSolutionArea(solutionAreaPartX1, solutionAreaPartX2);
     }
 
     private static double findCoefficient(String s) {   //move to specific class?

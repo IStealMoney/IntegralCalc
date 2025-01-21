@@ -10,5 +10,7 @@ interface FunctionComponent {    // interface between function types
     double calculateFuncPartX1(double solutionAreaPartX1, double uiX1);
 
     double calculateFuncPartX2(double solutionAreaPartX2, double uiX2);
+
+    double calculateArea(double solutionAreaPartX1, double solutionAreaPartX2);
 }
 

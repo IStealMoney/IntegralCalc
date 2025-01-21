@@ -71,7 +71,14 @@ public class Polynomial implements FunctionComponent { //subclass
         return solutionAreaPartX2;
     }
 
+    @Override
+    public double calculateArea(double solutionAreaPartX1, double solutionAreaPartX2) {
+        return solutionAreaPartX2 - solutionAreaPartX1;
+    }
+
     public String simplifyFunc(String evaluatedFunction, String simpEvalFunc) { // interface or move in CompositeFunc?
         return simpEvalFunc;
     }
+
+
 }
