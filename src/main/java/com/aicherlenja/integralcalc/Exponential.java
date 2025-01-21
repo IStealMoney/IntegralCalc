@@ -16,11 +16,6 @@ public class Exponential implements FunctionComponent {
     }
 
     @Override
-    public double getExponent(String s) {
-        return 0;
-    }
-
-    @Override
     public void integrateComp() {
 
     }

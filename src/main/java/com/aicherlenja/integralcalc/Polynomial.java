@@ -27,7 +27,6 @@ public class Polynomial implements FunctionComponent { //subclass
         return coefficient;
     }
 
-    @Override
     public double getExponent(String s) {
         if (s.contains("x")) {
             if (s.contains("^")) {

@@ -31,7 +31,7 @@ public class CompositeFunction { // manages function components
             System.out.println("Eingegeben: " + s);
 
             // calculate integral for specific function type
-            if (s.contains("x") && !s.contains("^x")) { // polynomial
+            if (s.contains("x") && !s.contains("^x") && !Trigonometric.isTrigo(s)) { // polynomial
                 Polynomial poly = new Polynomial(coefficient, exponent, s);
                 coefficient = poly.getCoefficient(s);
                 exponent = poly.getExponent(s);
@@ -42,9 +42,9 @@ public class CompositeFunction { // manages function components
                 simpEvalFunc = poly.simplifyFunc(evaluatedFunction, simpEvalFunc); // simplify
             } else if (s.contains("^x")) {  // exponential
                 Exponential exponential = new Exponential(coefficient, s);
-                exponent = exponential.getCoefficient(s);
+                coefficient = exponential.getCoefficient(s);
             } else if (Trigonometric.isTrigo(s)) {  // trigonometric
-                Trigonometric trigo = new Trigonometric(coefficient, exponent, s);
+                Trigonometric trigo = new Trigonometric(coefficient, s);
                 coefficient = trigo.getCoefficient(s);
                 trigo.integrateComp();
                 solutionAreaPartX1 += trigo.calculateFuncPartX1(solutionAreaPartX1, uiX1);

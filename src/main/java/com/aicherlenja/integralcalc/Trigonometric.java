@@ -1,53 +1,75 @@
 package com.aicherlenja.integralcalc;
 
+import static com.aicherlenja.integralcalc.CompositeFunction.evaluatedFunction;
 import static com.aicherlenja.integralcalc.CompositeFunction.getPreSign;
 
 public class Trigonometric implements FunctionComponent {
 
-    private double coefficient, exponent;
+    private double coefficient;
     private String s;
     private static String evaluatedFuncPart;
     private boolean isSin;
+    private char preSign;
+    CompositeFunction compFunc = new CompositeFunction();
 
-    public Trigonometric(double coefficient, double exponent, String s) {
+    public Trigonometric(double coefficient, String s) {
         this.coefficient = coefficient;
-        this.exponent = exponent;
         this.s = s;
     }
 
     @Override
     public double getCoefficient(String s) {
+        if (s.charAt(0) == 's' || s.charAt(0) == 'c') {
+            coefficient = 1;
+        } else if (s.charAt(0) != 's' || s.charAt(0) != 'c') {
+            if (s.contains("sin")) {
+                coefficient = Double.parseDouble(s.substring(0, s.indexOf("s")));
+            } else if (s.contains("cos")) {
+                coefficient = Double.parseDouble(s.substring(0, s.indexOf("c")));
+            }
+        }
         return coefficient;
     }
 
     @Override
-    public double getExponent(String s) {
-        return exponent;
-    }
-
-    @Override
     public void integrateComp() {
-        CompositeFunction compFunc = new CompositeFunction(exponent, coefficient);
-        if (isSin(s) && getPreSign(s) == '+') { // if +sin(x) -> -cos(x)
+        preSign = compFunc.getPreSign(s);
+        if (isSin(s) && preSign == '+') { // if +sin(x) -> -cos(x)
             System.out.println("is +sin");
-            s = s.replace("sin", "-cos");
-        } else if (isSin(s) && getPreSign(s) == '-') {  // if -sin(x) -> cos(x)
+            s = s.replace("sin", "cos");
+            preSign = '-';
+        } else if (isSin(s) && preSign == '-') {  // if -sin(x) -> cos(x)
             System.out.println("is -sin");
             s = s.replace("-", "");
-            s = s.replace("cos", "");
-        } else if (!isSin(s) && getPreSign(s) == '+') {  // if +cos(x) -> +sin(x)
+            s = s.replace("sin", "cos");
+            preSign = '+';
+        } else if (!isSin(s) && preSign == '+') {  // if +cos(x) -> +sin(x)
             System.out.println("is +cos");
             s = s.replace("cos", "sin");
-        } else if (!isSin(s) && getPreSign(s) == '-') {  // if -cos(x) -> -sin(x)
+            preSign = '+';
+        } else if (!isSin(s) && preSign == '-') {  // if -cos(x) -> -sin(x)
             System.out.println("is -cos");
+            s = s.replace("-", ""); // will be added again soon
             s = s.replace("cos", "sin");
+            preSign = '-';
         }
     }
 
     @Override
     public String getEvaluatedFunction() {
-        evaluatedFuncPart = s;
-        System.out.println(evaluatedFuncPart);
+        System.out.println(preSign);
+        System.out.println(coefficient);
+        System.out.println(s);
+        if (coefficient == 1 && preSign == '+') {
+            evaluatedFuncPart = s;
+        } else if (coefficient == 1 && preSign == '-') {
+            evaluatedFunction = preSign + s;
+        } else if (coefficient != 1 && preSign == '+') {
+            evaluatedFuncPart = s;
+        } else if (coefficient != 1 && preSign == '-') {
+            evaluatedFuncPart = preSign + s;
+        }
+        System.out.println("evaluatedFuncPart: " + evaluatedFuncPart);
         return evaluatedFuncPart;
     }
 

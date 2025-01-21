@@ -15,7 +15,6 @@ public class Root implements FunctionComponent {
         return coefficient;
     }
 
-    @Override
     public double getExponent(String s) {
         return 0;
     }
