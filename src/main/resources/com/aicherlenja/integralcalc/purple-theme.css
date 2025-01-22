@@ -1,0 +1,32 @@
+.header-section {
+    -fx-padding: 10px;
+    -fx-font-size: 20px;
+    -fx-background-color: teal;
+}
+
+.button {
+    -fx-border-color: purple;
+    -fx-background-color: #FFFFFF;
+}
+
+.text-area {
+    -fx-background-color: purple;
+    -fx-border-radius: 50;
+}
+
+.text-field {
+    -fx-border-color: purple;
+}
+
+.root {
+    -fx-background-color: grey;
+}
+
+.split-pane {
+    -fx-background-color: lightgrey;
+}
+
+.label {
+    -fx-background-color: white;
+    -fx-border-color: purple;
+}

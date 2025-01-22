@@ -9,8 +9,8 @@ import javafx.scene.control.ComboBox;
 import java.io.IOException;
 
 public class SettingsMenuController {
-    public static String[] comboBoxOptions = {"Dark theme", "Light theme", "Purple"};
-    private String themeSwitcher = "Dark theme";
+    public static String[] comboBoxOptions = {"Dark theme", "Light theme", "Purple theme"};
+    public static String themeSwitcher = "purple-theme.css";
 
     @FXML
     ComboBox themeComboBox = new ComboBox();
@@ -23,35 +23,28 @@ public class SettingsMenuController {
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 switch (t1) {
                     case "Dark theme":
-                        themeSwitcher = "Dark theme";
+                        themeSwitcher = "dark-theme.css";
                         break;
                     case "Light theme":
-                        themeSwitcher = "Light theme";
+                        themeSwitcher = "light-theme.css";
                         break;
-                    case "Dark purple":
-                        themeSwitcher = "purple";
+                    case "Purple theme":
+                        themeSwitcher = "purple-theme.css";
                         break;
                     default:
-                        themeSwitcher = "Dark theme";
+                        themeSwitcher = "purple-theme.css";
                 }
+                System.out.println(themeSwitcher);
             }
         });
     }
 
     @FXML
-    private void handleAppearanceApplyButton() {
+    private void handleAppearanceApplyButton() throws IOException {
         System.out.println("Appearance apply button clicked");
-        switch (themeSwitcher) {
-            case "Dark theme":
-                // load css?
-                break;
-            case "Light theme":
-
-                break;
-            case "Purple":
-
-                break;
-        }
+        Main main = new Main();
+        main.updateTheme(themeSwitcher);
+        main.switchScene("GUI.fxml");
     }
 
     @FXML
