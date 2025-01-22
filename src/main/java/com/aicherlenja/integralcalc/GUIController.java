@@ -5,7 +5,6 @@
 
 package com.aicherlenja.integralcalc;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -30,9 +29,13 @@ public class GUIController {    //UI control logic
     private TextField textFieldX1, textFieldX2, functionField;
 
     @FXML
+    private javafx.scene.control.Label labelErrorDisplay;
+
+    @FXML
     private void initialize() {
         textAreaArea.setEditable(false);
         textAreaAntiderivative.setEditable(false);
+        labelErrorDisplay.setVisible(true);
     }
 
     @FXML
@@ -45,7 +48,7 @@ public class GUIController {    //UI control logic
             uiX1 = Double.parseDouble(textFieldX1.getText());
             uiX2 = Double.parseDouble(textFieldX2.getText());
         } catch(NumberFormatException e) {
-            Platform.runLater(() -> textAreaArea.setText("NumberFormatException"));
+            labelErrorDisplay.setText("NumberFormatException");
         }
 
         if (troubleshooter.correctUserInput(uiX1, uiX2)) {
@@ -54,7 +57,7 @@ public class GUIController {    //UI control logic
             showSolution(CompositeFunction.solutionArea, CompositeFunction.evaluatedFunction);
         } else {
             errorMessage = troubleshooter.getErrorMessage();
-            textAreaArea.setText(errorMessage);
+            labelErrorDisplay.setText(errorMessage);
             System.out.println(errorMessage);
         }
     }
@@ -86,8 +89,7 @@ public class GUIController {    //UI control logic
     }
 
     public void showSolution(double solutionArea, String evaluatedFunction) {
-        System.out.println(evaluatedFunction);
-        System.out.println(solutionArea);
-        Platform.runLater(() -> textAreaArea.setText("Area: " + (Double.toString(solutionArea)) + "\nAntiderivative: " + evaluatedFunction));
+        textAreaAntiderivative.setText(evaluatedFunction);
+        textAreaArea.setText(Double.toString(solutionArea));
     }
 }

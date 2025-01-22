@@ -19,7 +19,7 @@ public class Troubleshooter {
 
     public String getErrorMessage() {
         if (X2greaterX1) {
-             return "Error: X2 needs to be greater than X1!";
+             return "Error: x2 needs to be\ngreater than x1";
         }
         return "lol";
     }

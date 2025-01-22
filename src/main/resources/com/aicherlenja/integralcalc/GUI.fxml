@@ -24,6 +24,7 @@
                   <Label fx:id="labelAntiderivative" layoutX="20.0" layoutY="250.0" text="Antiderivative:" />
                   <Label fx:id="labelArea" layoutX="20.0" layoutY="370.0" text="Area:" />
                   <Button fx:id="copyButton1" layoutX="165.0" layoutY="450.0" mnemonicParsing="false" onAction="#handleAreaCopyButton" prefHeight="28.0" prefWidth="49.0" text="copy" />
+                  <Label fx:id="labelErrorDisplay" layoutX="20.0" layoutY="490.0" prefHeight="60.0" prefWidth="195.0" text=" " />
                </children>
             </AnchorPane>
         </items>
