@@ -71,7 +71,6 @@ public class Main extends Application { // stage, switch scenes, themes
 //            if (window instanceof Stage) {
 //                Scene scene = ((Stage) window).getScene();
 //                if (scene != null) {
-//
 //                }
 //            }
 //        }
