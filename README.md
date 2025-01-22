@@ -4,9 +4,10 @@ IntegralCalc is a JavaFX application that calculates integrals of different func
 ## To-Do list
 - [x] Polynomial functions 
 - [ ] Logarithmic/ Exponential functions
-- [ ] Trigonometric functions
+- [X] Trigonometric functions
 - [ ] Root functions
 - [ ] Composite functions
 - [ ] Cartesian coordinate system
 - [ ] help page
+- [x] themes
 
