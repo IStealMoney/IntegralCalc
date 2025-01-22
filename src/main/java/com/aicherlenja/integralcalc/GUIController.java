@@ -21,14 +21,18 @@ public class GUIController {    //UI control logic
     public static String function, errorMessage;
 
     @FXML
-    private TextArea textArea = new TextArea();
+    private TextArea textAreaArea = new TextArea();
+
+    @FXML
+    private TextArea textAreaAntiderivative = new TextArea();
 
     @FXML
     private TextField textFieldX1, textFieldX2, functionField;
 
     @FXML
     private void initialize() {
-
+        textAreaArea.setEditable(false);
+        textAreaAntiderivative.setEditable(false);
     }
 
     @FXML
@@ -41,7 +45,7 @@ public class GUIController {    //UI control logic
             uiX1 = Double.parseDouble(textFieldX1.getText());
             uiX2 = Double.parseDouble(textFieldX2.getText());
         } catch(NumberFormatException e) {
-            Platform.runLater(() -> textArea.setText("NumberFormatException"));
+            Platform.runLater(() -> textAreaArea.setText("NumberFormatException"));
         }
 
         if (troubleshooter.correctUserInput(uiX1, uiX2)) {
@@ -50,7 +54,7 @@ public class GUIController {    //UI control logic
             showSolution(CompositeFunction.solutionArea, CompositeFunction.evaluatedFunction);
         } else {
             errorMessage = troubleshooter.getErrorMessage();
-            textArea.setText(errorMessage);
+            textAreaArea.setText(errorMessage);
             System.out.println(errorMessage);
         }
     }
@@ -68,15 +72,22 @@ public class GUIController {    //UI control logic
     }
 
     @FXML
-    public void handleCopyButton() {
+    public void handleAreaCopyButton() {
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-        StringSelection selection = new StringSelection(textArea.getText());
+        StringSelection selection = new StringSelection(textAreaArea.getText());
+        clipboard.setContents(selection, null);
+    }
+
+    @FXML
+    public void handleAntiderivativeCopyButton() {
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        StringSelection selection = new StringSelection(textAreaAntiderivative.getText());
         clipboard.setContents(selection, null);
     }
 
     public void showSolution(double solutionArea, String evaluatedFunction) {
         System.out.println(evaluatedFunction);
         System.out.println(solutionArea);
-        Platform.runLater(() -> textArea.setText("Area: " + (Double.toString(solutionArea)) + "\nAntiderivative: " + evaluatedFunction));
+        Platform.runLater(() -> textAreaArea.setText("Area: " + (Double.toString(solutionArea)) + "\nAntiderivative: " + evaluatedFunction));
     }
 }

@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class SettingsMenuController {
     public static String[] comboBoxOptions = {"Dark theme", "Light theme", "Purple theme"};
-    public static String themeSwitcher = "purple-theme.css";
+    public static String themeSwitcher = "dark-theme.css";
 
     @FXML
     ComboBox themeComboBox = new ComboBox();
