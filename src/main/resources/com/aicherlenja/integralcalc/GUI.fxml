@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="600.0" prefWidth="800.0" stylesheets="@purple-theme.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aicherlenja.integralcalc.GUIController">
+<VBox prefHeight="600.0" prefWidth="800.0" stylesheets="@purple-theme.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aicherlenja.integralcalc.GUIController">
    <children>
       <SplitPane prefHeight="600.0" prefWidth="800.0">
         <items>
@@ -14,17 +19,18 @@
                   <Label fx:id="labelX1" layoutX="20.0" layoutY="100.0" prefHeight="25.0" prefWidth="30.0" text="x1:" />
                   <TextField fx:id="textFieldX2" layoutX="55.0" layoutY="150.0" prefHeight="25.0" prefWidth="70.0" />
                   <Label fx:id="labelX2" layoutX="20.0" layoutY="150.0" prefHeight="25.0" prefWidth="30.0" text="x2:" />
-                  <Button fx:id="buttonSubmit" layoutX="55.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleSubmitBtn" prefHeight="26.0" prefWidth="160.0" text="Submit" textAlignment="CENTER" />
+                  <Button fx:id="buttonSubmit" layoutX="55.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleSubmitBtn" prefHeight="26.0" prefWidth="160.0" text="submit" textAlignment="CENTER" />
                   <TextArea fx:id="textAreaArea" layoutX="20.0" layoutY="400.0" prefHeight="25.0" prefWidth="195.0" />
                   <Label fx:id="labelfx" layoutX="20.0" layoutY="50.0" prefHeight="25.0" prefWidth="30.0" text="f(x)=" />
                   <Button fx:id="helpButton" layoutX="155.0" layoutY="100.0" mnemonicParsing="false" onAction="#handleHelpButton" prefHeight="75.0" prefWidth="60.0" text="HELP" textAlignment="CENTER" />
-                  <Button fx:id="settingsButton" layoutX="20.0" layoutY="560.0" mnemonicParsing="false" onAction="#handleSettingsButton" text="Settings" />
+                  <Button fx:id="settingsButton" layoutX="144.0" layoutY="550.0" mnemonicParsing="false" onAction="#handleSettingsButton" text="settings" />
                   <Button fx:id="copyButton0" layoutX="165.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleAntiderivativeCopyButton" prefHeight="28.0" prefWidth="49.0" text="copy" />
                   <TextArea fx:id="textAreaAntiderivative" layoutX="18.0" layoutY="280.0" prefHeight="25.0" prefWidth="200.0" />
                   <Label fx:id="labelAntiderivative" layoutX="20.0" layoutY="250.0" text="Antiderivative:" />
                   <Label fx:id="labelArea" layoutX="20.0" layoutY="370.0" text="Area:" />
                   <Button fx:id="copyButton1" layoutX="165.0" layoutY="450.0" mnemonicParsing="false" onAction="#handleAreaCopyButton" prefHeight="28.0" prefWidth="49.0" text="copy" />
                   <Label fx:id="labelErrorDisplay" layoutX="20.0" layoutY="490.0" prefHeight="60.0" prefWidth="195.0" text=" " />
+                  <Button fx:id="leaveButton" layoutX="20.0" layoutY="550.0" mnemonicParsing="false" onAction="#handleLeaveButton" text="leave" />
                </children>
             </AnchorPane>
         </items>

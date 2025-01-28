@@ -5,18 +5,23 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 
 import java.io.IOException;
 
 public class SettingsMenuController {
     public static String[] comboBoxOptions = {"Dark theme", "Light theme", "Purple theme"};
-    public static String themeSwitcher = "light-theme.css";
+    public static String themeSwitcher = "dark-theme.css";
 
     @FXML
     ComboBox themeComboBox = new ComboBox();
 
     @FXML
+    private TextArea textAreaInstructions = new TextArea();
+
+    @FXML
     private void initialize() {
+        textAreaInstructions.setEditable(false);
         themeComboBox.setItems(FXCollections.observableArrayList(comboBoxOptions));
         themeComboBox.valueProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -32,7 +37,7 @@ public class SettingsMenuController {
                         themeSwitcher = "purple-theme.css";
                         break;
                     default:
-                        themeSwitcher = "purple-theme.css";
+                        themeSwitcher = "dark-theme.css";
                 }
                 System.out.println(themeSwitcher);
             }
@@ -41,7 +46,6 @@ public class SettingsMenuController {
 
     @FXML
     private void handleAppearanceApplyButton() throws IOException {
-        System.out.println("Appearance apply button clicked");
         Main main = new Main();
         main.updateTheme(themeSwitcher);
         main.switchScene("GUI.fxml");

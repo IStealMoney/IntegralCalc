@@ -58,7 +58,6 @@ public class Main extends Application { // stage, switch scenes, themes
             return;
         }
         updateTheme(themeSwitcher);
-        System.out.println(themeSwitcher);
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
@@ -67,13 +66,6 @@ public class Main extends Application { // stage, switch scenes, themes
     public void updateTheme(String themeSwitcher) {
         scene.getStylesheets().clear();
         scene.getStylesheets().add(getClass().getResource(themeSwitcher).toExternalForm());
-//        for (Window window : Stage.getWindows()) {
-//            if (window instanceof Stage) {
-//                Scene scene = ((Stage) window).getScene();
-//                if (scene != null) {
-//                }
-//            }
-//        }
     }
 
     public static GUIController getController() {   // currently not in use

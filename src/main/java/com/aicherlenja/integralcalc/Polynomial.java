@@ -31,11 +31,6 @@ public class Polynomial implements FunctionComponent { //subclass
         if (s.contains("x")) {
             if (s.contains("^")) {
                 exponentPart = s.substring(s.indexOf("^")+1, s.length()); // whole exponent (e.g. 2x)
-                //if (exponentPart.matches("[-+]?\\d*\\.?\\d+")) {
-                //exponent = Float.parseFloat(exponentPart);
-                //} else {
-                //throw new NumberFormatException("Invalid exponent format: " + exponentPart);
-                //}
                 exponent = Double.parseDouble(exponentPart);
             } else {
                 exponent = 1;

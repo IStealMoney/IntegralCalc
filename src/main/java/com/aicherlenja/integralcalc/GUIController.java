@@ -75,6 +75,11 @@ public class GUIController {    //UI control logic
     }
 
     @FXML
+    public void handleLeaveButton() throws IOException {
+        System.exit(0);
+    }
+
+    @FXML
     public void handleAreaCopyButton() {
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
         StringSelection selection = new StringSelection(textAreaArea.getText());
