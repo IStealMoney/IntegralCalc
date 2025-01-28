@@ -30,8 +30,7 @@ public class Trigonometric implements FunctionComponent {
         return coefficient;
     }
 
-    @Override
-    public void integrateComp() {
+    public String integrateComp(String s) {
         preSign = compFunc.getPreSign(s);
         if (isSin(s) && preSign == '+') { // if +sin(x) -> -cos(x)
             System.out.println("is +sin");
@@ -52,20 +51,21 @@ public class Trigonometric implements FunctionComponent {
             s = s.replace("cos", "sin");
             preSign = '-';
         }
+        return s;
     }
 
     @Override
-    public String getEvaluatedFunction() {
+    public String getEvaluatedFunction(double antideriCoeff, double antideriExpo, String s) {
         System.out.println(preSign);
-        System.out.println(coefficient);
+        System.out.println(antideriCoeff);
         System.out.println(s);
-        if (coefficient == 1 && preSign == '+') {
-            evaluatedFuncPart = s;
-        } else if (coefficient == 1 && preSign == '-') {
+        if (antideriCoeff == 1 && preSign == '+') {
+            evaluatedFuncPart = preSign + s;
+        } else if (antideriCoeff == 1 && preSign == '-') {
             evaluatedFunction = preSign + s;
-        } else if (coefficient != 1 && preSign == '+') {
-            evaluatedFuncPart = s;
-        } else if (coefficient != 1 && preSign == '-') {
+        } else if (antideriCoeff != 1 && preSign == '+') {
+            evaluatedFuncPart = preSign + s;
+        } else if (antideriCoeff != 1 && preSign == '-') {
             evaluatedFuncPart = preSign + s;
         }
         System.out.println("evaluatedFuncPart: " + evaluatedFuncPart);
@@ -73,7 +73,7 @@ public class Trigonometric implements FunctionComponent {
     }
 
     @Override
-    public double calculateFuncPartX1(double solutionAreaPartX1, double uiX1) {
+    public double calculateFuncPartX1(double solutionAreaPartX1, double uiX1, double antideriCoeff, double antideriExpo) {
         if (isSin(s)) {
             solutionAreaPartX1 = Math.sin(uiX1);
         } else if (!isSin(s)) {
@@ -83,7 +83,7 @@ public class Trigonometric implements FunctionComponent {
     }
 
     @Override
-    public double calculateFuncPartX2(double solutionAreaPartX2, double uiX2) {
+    public double calculateFuncPartX2(double solutionAreaPartX2, double uiX2, double antideriCoeff, double antideriExpo) {
         if (isSin(s)) {
             solutionAreaPartX2 = Math.sin(uiX2);
         } else if (!isSin(s)) {

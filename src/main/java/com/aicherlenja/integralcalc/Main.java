@@ -6,8 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
 import javafx.stage.Stage;
-import javafx.stage.Window;
-
 import java.io.IOException;
 
 import static com.aicherlenja.integralcalc.SettingsMenuController.themeSwitcher;
@@ -39,12 +37,11 @@ public class Main extends Application { // stage, switch scenes, themes
         guiRoot.getStylesheets().add(getClass().getResource(themeSwitcher).toExternalForm());
         try {
             if (fxml.equals("GUI.fxml")) {
+                SplitPane splitPane = new SplitPane();
                 CartCoordSys cCS = new CartCoordSys();
                 cCS.drawCoordSys();
-                SplitPane splitPane = new SplitPane();
                 splitPane.getItems().addAll(guiRoot, CartCoordSys.cViewer);
                 splitPane.setDividerPositions(0.3);
-
                 scene = new Scene(splitPane, 800, 600);
                 stage.setTitle("IntegralCalc");
             } else if (fxml.equals("SettingsMenu.fxml")) {
@@ -55,7 +52,6 @@ public class Main extends Application { // stage, switch scenes, themes
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Error loading FXML file: " + fxml);
-            return;
         }
         updateTheme(themeSwitcher);
         stage.setResizable(false);

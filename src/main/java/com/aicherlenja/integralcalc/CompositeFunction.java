@@ -4,7 +4,7 @@ import static com.aicherlenja.integralcalc.GUIController.uiX1;
 import static com.aicherlenja.integralcalc.GUIController.uiX2;
 
 public class CompositeFunction { // manages function components
-    public static double coefficient, exponent, solutionArea, solutionAreaPartX1, solutionAreaPartX2;
+    public static double coefficient, antideriCoeff, antideriExpo, exponent, solutionArea, solutionAreaPartX1, solutionAreaPartX2;
     public static String exponentPart, evaluatedFunction, simpEvalFunc;
 
     CompositeFunction() {
@@ -35,61 +35,33 @@ public class CompositeFunction { // manages function components
                 Polynomial poly = new Polynomial(coefficient, exponent, s);
                 coefficient = poly.getCoefficient(s);
                 exponent = poly.getExponent(s);
-                poly.integrateComp();
-                solutionAreaPartX1 += poly.calculateFuncPartX1(solutionAreaPartX1, uiX1); // area
-                solutionAreaPartX2 += poly.calculateFuncPartX2(solutionAreaPartX2, uiX2);
-                evaluatedFunction = (evaluatedFunction + " " + poly.getEvaluatedFunction());  // integrated function
+                antideriExpo = addOneExpo(exponent);
+                antideriCoeff = divideWithNewExpo(coefficient, antideriExpo);
+                solutionAreaPartX1 += poly.calculateFuncPartX1(solutionAreaPartX1, uiX1, antideriCoeff, antideriExpo); // area
+                solutionAreaPartX2 += poly.calculateFuncPartX2(solutionAreaPartX2, uiX2, antideriCoeff, antideriExpo);
+                evaluatedFunction = (evaluatedFunction + " " + poly.getEvaluatedFunction(antideriCoeff, antideriExpo, s));  // integrated function
                 solutionArea = poly.calculateArea(solutionAreaPartX1, solutionAreaPartX2);
-                simpEvalFunc = poly.simplifyFunc(evaluatedFunction, simpEvalFunc); // simplify
-            } else if (s.contains("^x")) {  // exponential
-                Exponential exponential = new Exponential(coefficient, s);
-                coefficient = exponential.getCoefficient(s);
-                solutionArea = calculateSolutionArea(solutionAreaPartX1, solutionAreaPartX2);
+                //simpEvalFunc = poly.simplifyFunc(evaluatedFunction, simpEvalFunc); // simplify
             } else if (Trigonometric.isTrigo(s)) {  // trigonometric
                 Trigonometric trigo = new Trigonometric(coefficient, s);
                 coefficient = trigo.getCoefficient(s);
-                trigo.integrateComp();
-                solutionAreaPartX1 += trigo.calculateFuncPartX1(solutionAreaPartX1, uiX1);
-                solutionAreaPartX2 += trigo.calculateFuncPartX2(solutionAreaPartX2, uiX2);
-                evaluatedFunction = (evaluatedFunction + " " + trigo.getEvaluatedFunction());
+                evaluatedFunction += trigo.integrateComp(s);
+                solutionAreaPartX1 += trigo.calculateFuncPartX1(solutionAreaPartX1, uiX1, antideriCoeff, antideriExpo);
+                solutionAreaPartX2 += trigo.calculateFuncPartX2(solutionAreaPartX2, uiX2, antideriCoeff, antideriExpo);
+                //evaluatedFunction = (evaluatedFunction + " " + trigo.getEvaluatedFunction(antideriCoeff, antideriExpo, s));
                 solutionArea = trigo.calculateArea(solutionAreaPartX1, solutionAreaPartX2);
-            } else if (s.contains("sqrt")) {    // root
-                Root root = new Root(coefficient, s);
-                coefficient = root.getCoefficient(s);
-                root.integrateComp();
-                solutionArea = calculateSolutionArea(solutionAreaPartX1, solutionAreaPartX2);
             }
         }
+        CartCoordSys evalFuncCartCoord = new CartCoordSys(evaluatedFunction);
+        evalFuncCartCoord.drawFunc(evaluatedFunction);
     }
 
-    private static double findCoefficient(String s) {   //move to specific class?
-        if (!s.contains("x")) {
-            coefficient = Double.parseDouble(s);
-        } else if (s.contains("x") && !Trigonometric.isTrigo(s)) {
-            if (s.charAt(0) == 'x' ||
-                    (s.charAt(0) == '+' && s.charAt(1) == 'x')) {
-                coefficient = 1;
-            } else if (s.charAt(0) == '-' && s.charAt(1) == 'x') {
-                coefficient = -1;
-            } else {
-                coefficient = Double.parseDouble(s.substring(0, s.indexOf("x")));
-            }
-        } else if (Trigonometric.isTrigo(s)) {
-            if (s.contains("sin")) { // s for sin and c for cos
-                coefficient = Double.parseDouble(s.substring(0, s.indexOf("s")));
-            } else if (s.contains("cos")) {
-                coefficient = Double.parseDouble(s.substring(0, s.indexOf("c")));
-            }
-        }
-        return coefficient;
-    }
-
-    public double addOneExpo(double exponent) {
+    public static double addOneExpo(double exponent) {
         exponent++;
         return exponent;
     }
 
-    public double divideWithNewExpo(double coefficient, double exponent) {
+    public static double divideWithNewExpo(double coefficient, double exponent) {
         coefficient = coefficient / exponent;
         return coefficient;
     }

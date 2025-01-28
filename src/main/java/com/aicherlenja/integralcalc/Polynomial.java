@@ -1,12 +1,13 @@
 package com.aicherlenja.integralcalc;
 
+import static java.lang.Math.exp;
 import static java.lang.Math.pow;
 
 public class Polynomial implements FunctionComponent { //subclass
 
     // f(x) = a_n * x^n + a_n-1 * x^n-1 ...
 
-    private double coefficient, exponent;
+    private static double coefficient, exponent, antideriExpo, antideriCoeff;
     private String evaluatedFuncPart, s, exponentPart;
 
     public Polynomial(double coefficient, double exponent, String s) {
@@ -42,27 +43,20 @@ public class Polynomial implements FunctionComponent { //subclass
     }
 
     @Override
-    public void integrateComp() {
-        CompositeFunction compFunc = new CompositeFunction(exponent, coefficient);
-        exponent = compFunc.addOneExpo(exponent);
-        coefficient = compFunc.divideWithNewExpo(coefficient, exponent);
-    }
-
-    @Override
-    public String getEvaluatedFunction() {
-        evaluatedFuncPart = coefficient + "x^" + exponent;
+    public String getEvaluatedFunction(double antideriCoeff, double antideriExpo, String s) {
+        evaluatedFuncPart = antideriCoeff + "x^" + antideriExpo;
         return evaluatedFuncPart;
     }
 
     @Override
-    public double calculateFuncPartX1(double solutionAreaPartX1, double uiX1) {
-        solutionAreaPartX1 = (coefficient * pow(uiX1, exponent));
+    public double calculateFuncPartX1(double solutionAreaPartX1, double uiX1, double antideriCoeff, double antideriExpo) {
+        solutionAreaPartX1 = (antideriCoeff * pow(uiX1, antideriExpo));
         return solutionAreaPartX1;
     }
 
     @Override
-    public double calculateFuncPartX2(double solutionAreaPartX2, double uiX2) {
-        solutionAreaPartX2 = (coefficient * pow(uiX2, exponent));
+    public double calculateFuncPartX2(double solutionAreaPartX2, double uiX2, double antideriCoeff, double antideriExpo) {
+        solutionAreaPartX2 = (antideriCoeff * pow(uiX2, antideriExpo));
         return solutionAreaPartX2;
     }
 
@@ -74,6 +68,4 @@ public class Polynomial implements FunctionComponent { //subclass
     public String simplifyFunc(String evaluatedFunction, String simpEvalFunc) { // interface or move in CompositeFunc?
         return simpEvalFunc;
     }
-
-
 }

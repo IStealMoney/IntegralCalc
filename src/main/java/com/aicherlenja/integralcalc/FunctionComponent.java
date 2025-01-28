@@ -3,13 +3,11 @@ package com.aicherlenja.integralcalc;
 interface FunctionComponent {    // interface between function types
     double getCoefficient(String s);
 
-    void integrateComp();
+    String getEvaluatedFunction(double antideriCoeff, double antideriExpo, String s);
 
-    String getEvaluatedFunction();
+    double calculateFuncPartX1(double solutionAreaPartX1, double uiX1, double antideriCoeff, double antideriExpo);
 
-    double calculateFuncPartX1(double solutionAreaPartX1, double uiX1);
-
-    double calculateFuncPartX2(double solutionAreaPartX2, double uiX2);
+    double calculateFuncPartX2(double solutionAreaPartX2, double uiX2, double antideriCoeff, double antideriExpo);
 
     double calculateArea(double solutionAreaPartX1, double solutionAreaPartX2);
 }
