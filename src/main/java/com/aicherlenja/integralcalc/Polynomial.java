@@ -16,7 +16,6 @@ public class Polynomial implements FunctionComponent { //subclass
         this.s = s;
     }
 
-    @Override
     public double getCoefficient(String s) {
         if (s.charAt(0) == 'x' || (s.charAt(0) == '+' && s.charAt(1) == 'x')) {
             coefficient = 1;
@@ -42,7 +41,6 @@ public class Polynomial implements FunctionComponent { //subclass
         return exponent;
     }
 
-    @Override
     public String getEvaluatedFunction(double antideriCoeff, double antideriExpo, String s) {
         evaluatedFuncPart = antideriCoeff + "x^" + antideriExpo;
         return evaluatedFuncPart;

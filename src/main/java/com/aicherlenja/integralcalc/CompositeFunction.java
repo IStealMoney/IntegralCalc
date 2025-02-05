@@ -21,6 +21,7 @@ public class CompositeFunction { // manages function components
         this.coefficient = coefficient;
         this.exponent = exponent;
     }
+
     public static void manageFunction() {
         solutionArea = 0;
         String[] functionSplit = GUIController.function.split("(?=[+-])");
@@ -44,8 +45,9 @@ public class CompositeFunction { // manages function components
                 //simpEvalFunc = poly.simplifyFunc(evaluatedFunction, simpEvalFunc); // simplify
             } else if (Trigonometric.isTrigo(s)) {  // trigonometric
                 Trigonometric trigo = new Trigonometric(coefficient, s);
-                coefficient = trigo.getCoefficient(s);
+                //coefficient = trigo.getCoefficient(s);
                 evaluatedFunction += trigo.integrateComp(s);
+                System.out.println(evaluatedFunction);
                 solutionAreaPartX1 += trigo.calculateFuncPartX1(solutionAreaPartX1, uiX1, antideriCoeff, antideriExpo);
                 solutionAreaPartX2 += trigo.calculateFuncPartX2(solutionAreaPartX2, uiX2, antideriCoeff, antideriExpo);
                 //evaluatedFunction = (evaluatedFunction + " " + trigo.getEvaluatedFunction(antideriCoeff, antideriExpo, s));

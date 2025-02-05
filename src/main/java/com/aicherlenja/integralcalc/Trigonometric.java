@@ -16,61 +16,45 @@ public class Trigonometric implements FunctionComponent {
         this.s = s;
     }
 
-    @Override
-    public double getCoefficient(String s) {
-        if (s.charAt(0) == 's' || s.charAt(0) == 'c') {
-            coefficient = 1;
-        } else if (s.charAt(0) != 's' || s.charAt(0) != 'c') {
-            if (s.contains("sin")) {
-                coefficient = Double.parseDouble(s.substring(0, s.indexOf("s")));
-            } else if (s.contains("cos")) {
-                coefficient = Double.parseDouble(s.substring(0, s.indexOf("c")));
-            }
-        }
-        return coefficient;
-    }
+//    @Override
+//    public double getCoefficient(String s) {
+//        if (s.charAt(0) == 's' || s.charAt(0) == 'c') {
+//            coefficient = 1;
+//        } else if (s.charAt(0) != 's' || s.charAt(0) != 'c') {
+//            if (s.contains("-")) {
+//                if (s.contains("sin")) {
+//                    coefficient = Double.parseDouble(s.substring(1, s.indexOf("s")));
+//                } else if (s.contains("cos")) {
+//                    coefficient = Double.parseDouble(s.substring(1, s.indexOf("c")));
+//                }
+//                preSign = '-';
+//            }
+//        }
+//        return coefficient;
+//    }
 
     public String integrateComp(String s) {
         preSign = compFunc.getPreSign(s);
         if (isSin(s) && preSign == '+') { // if +sin(x) -> -cos(x)
             System.out.println("is +sin");
-            s = s.replace("sin", "cos");
+            s = "-" + s;
+            evaluatedFunction = s.replace("sin", "cos");
             preSign = '-';
         } else if (isSin(s) && preSign == '-') {  // if -sin(x) -> cos(x)
             System.out.println("is -sin");
-            s = s.replace("-", "");
             s = s.replace("sin", "cos");
+            evaluatedFunction = s.replace("-", "");
             preSign = '+';
         } else if (!isSin(s) && preSign == '+') {  // if +cos(x) -> +sin(x)
             System.out.println("is +cos");
-            s = s.replace("cos", "sin");
-            preSign = '+';
+            evaluatedFunction = s.replace("cos", "sin");
         } else if (!isSin(s) && preSign == '-') {  // if -cos(x) -> -sin(x)
             System.out.println("is -cos");
-            s = s.replace("-", ""); // will be added again soon
-            s = s.replace("cos", "sin");
-            preSign = '-';
+            evaluatedFunction = s.replace("cos", "sin");
         }
-        return s;
+        return evaluatedFunction;
     }
 
-    @Override
-    public String getEvaluatedFunction(double antideriCoeff, double antideriExpo, String s) {
-        System.out.println(preSign);
-        System.out.println(antideriCoeff);
-        System.out.println(s);
-        if (antideriCoeff == 1 && preSign == '+') {
-            evaluatedFuncPart = preSign + s;
-        } else if (antideriCoeff == 1 && preSign == '-') {
-            evaluatedFunction = preSign + s;
-        } else if (antideriCoeff != 1 && preSign == '+') {
-            evaluatedFuncPart = preSign + s;
-        } else if (antideriCoeff != 1 && preSign == '-') {
-            evaluatedFuncPart = preSign + s;
-        }
-        System.out.println("evaluatedFuncPart: " + evaluatedFuncPart);
-        return evaluatedFuncPart;
-    }
 
     @Override
     public double calculateFuncPartX1(double solutionAreaPartX1, double uiX1, double antideriCoeff, double antideriExpo) {
