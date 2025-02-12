@@ -47,6 +47,9 @@ public class Trigonometric implements FunctionComponent {
                     } else if (s.contains("cos")) {
                         antideriCoeffString = s.substring(s.indexOf("-"), s.indexOf('c'));
                     }
+                    if (antideriCoeffString.equals("-")) {
+                        antideriCoeffString = "-1";
+                    }
                     if (!antideriCoeffString.isEmpty()) {
                         antideriCoeff = Double.parseDouble(antideriCoeffString);
                     } else {
