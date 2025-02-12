@@ -3,7 +3,7 @@ package com.aicherlenja.integralcalc;
 public class Troubleshooter {
 
     public static String errorMessage = "";
-    private static boolean X2greaterX1;
+    private static boolean X2greaterX1, stringIsNull;
 
     public boolean correctUserInput(double uiX1, double uiX2)  {
         GUIController guiCon = new GUIController();
@@ -17,9 +17,20 @@ public class Troubleshooter {
         return true;
     }
 
+    public static boolean isStringNull(String s) {
+        if (s == null || s.isEmpty()) {
+            stringIsNull = true;
+            return true;
+        }
+        return false;
+    }
+
     public String getErrorMessage() {
         if (X2greaterX1) {
              return "Error: x2 needs to be\ngreater than x1";
+        }
+        if (stringIsNull) {
+            return "Input string 's' (evaluated) cannot be null or empty";
         }
         return "lol";
     }

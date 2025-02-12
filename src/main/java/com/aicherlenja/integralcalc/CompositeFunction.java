@@ -28,9 +28,6 @@ public class CompositeFunction { // manages function components
 
         for (String s : functionSplit) {
             s = s.trim();
-
-            System.out.println("Eingegeben: " + s);
-
             // calculate integral for specific function type
             if (s.contains("x") && !s.contains("^x") && !Trigonometric.isTrigo(s)) { // polynomial
                 Polynomial poly = new Polynomial(coefficient, exponent, s);
@@ -38,18 +35,17 @@ public class CompositeFunction { // manages function components
                 exponent = poly.getExponent(s);
                 antideriExpo = addOneExpo(exponent);
                 antideriCoeff = divideWithNewExpo(coefficient, antideriExpo);
-                solutionAreaPartX1 += poly.calculateFuncPartX1(solutionAreaPartX1, uiX1, antideriCoeff, antideriExpo); // area
-                solutionAreaPartX2 += poly.calculateFuncPartX2(solutionAreaPartX2, uiX2, antideriCoeff, antideriExpo);
+                solutionAreaPartX1 += poly.calculateFuncPartX1(uiX1, antideriCoeff, antideriExpo); // area
+                solutionAreaPartX2 += poly.calculateFuncPartX2(uiX2, antideriCoeff, antideriExpo);
                 evaluatedFunction = (evaluatedFunction + " " + poly.getEvaluatedFunction(antideriCoeff, antideriExpo, s));  // integrated function
                 solutionArea = poly.calculateArea(solutionAreaPartX1, solutionAreaPartX2);
                 //simpEvalFunc = poly.simplifyFunc(evaluatedFunction, simpEvalFunc); // simplify
             } else if (Trigonometric.isTrigo(s)) {  // trigonometric
                 Trigonometric trigo = new Trigonometric(coefficient, s);
-                //coefficient = trigo.getCoefficient(s);
                 evaluatedFunction += trigo.integrateComp(s);
-                System.out.println(evaluatedFunction);
-                solutionAreaPartX1 += trigo.calculateFuncPartX1(solutionAreaPartX1, uiX1, antideriCoeff, antideriExpo);
-                solutionAreaPartX2 += trigo.calculateFuncPartX2(solutionAreaPartX2, uiX2, antideriCoeff, antideriExpo);
+                antideriCoeff = trigo.getAntideriCoeff(evaluatedFunction);
+                solutionAreaPartX1 += trigo.calculateFuncPartX1(uiX1, antideriCoeff, antideriExpo);
+                solutionAreaPartX2 += trigo.calculateFuncPartX2(uiX2, antideriCoeff, antideriExpo);
                 //evaluatedFunction = (evaluatedFunction + " " + trigo.getEvaluatedFunction(antideriCoeff, antideriExpo, s));
                 solutionArea = trigo.calculateArea(solutionAreaPartX1, solutionAreaPartX2);
             }

@@ -47,13 +47,15 @@ public class Polynomial implements FunctionComponent { //subclass
     }
 
     @Override
-    public double calculateFuncPartX1(double solutionAreaPartX1, double uiX1, double antideriCoeff, double antideriExpo) {
+    public double calculateFuncPartX1(double uiX1, double antideriCoeff, double antideriExpo) {
+        double solutionAreaPartX1 = 0;
         solutionAreaPartX1 = (antideriCoeff * pow(uiX1, antideriExpo));
         return solutionAreaPartX1;
     }
 
     @Override
-    public double calculateFuncPartX2(double solutionAreaPartX2, double uiX2, double antideriCoeff, double antideriExpo) {
+    public double calculateFuncPartX2(double uiX2, double antideriCoeff, double antideriExpo) {
+        double solutionAreaPartX2 = 0;
         solutionAreaPartX2 = (antideriCoeff * pow(uiX2, antideriExpo));
         return solutionAreaPartX2;
     }
